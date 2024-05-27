@@ -36,4 +36,10 @@ public class TradeBoardController {
 		return "usedCarTradeDetail";
 	}
 	
+	@RequestMapping("/registcar")
+	public String TradeBoardWrite() {
+	
+		return "usedCarTradeWrite";
+	}
+	
 }
