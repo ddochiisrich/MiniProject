@@ -5,6 +5,7 @@ import java.security.Timestamp;
 public class Board {
 //	- 차종을 입력 - cname, 사고일지 - content, 사진 file1, 주행거리 km, 타이어 tire, 냉각수 coolant, 배터리 battery, 와이퍼 wiper, 에어컨 - aircon, no - number
 	// regDate - 시간 , readCount - 조회수
+	// recommend 추천, thank 좋아요
 	private int no;
 	private String cname;
 	private String notent;
