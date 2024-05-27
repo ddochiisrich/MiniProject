@@ -17,7 +17,7 @@
 		<property name="mapperLocations"
 			value="classpath:repository/mappers/**/*Mapper.xml" />
 		<property name="typeAliasesPackage"
-			value="com.springstudy.bbs.domain" />
+			value="com.second.miniproject.domain" />
 	</bean>
 
 	<bean id="sqlSessionTemplate"
