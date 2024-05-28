@@ -29,5 +29,28 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
+	
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+		<!-- 기존에 문자 셋이 설정되어 있다 하더라도 request, response에 강제로 위에서 지정한 문자 셋으로 인코딩을 
+			설정하라고 지정하는 셋팅 즉 getCharacterEncoding()을 호출해 null이 아니라 하더라도 request와 response에 
+			utf-8 문자 셋을 강제로 설정한다. -->
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<!-- Servlet과 마찬가지로 Filter도 <filter-mappign> 태그를 사용해 필터를 매핑하며 <url-pattern> 
+		태그에 지정한 패턴에 따라서 실행된다. -->
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>

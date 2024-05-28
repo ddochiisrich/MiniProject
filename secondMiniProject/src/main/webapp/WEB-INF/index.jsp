@@ -9,6 +9,8 @@
 <link href="resources/bootstrap/bootstrap.min.css" rel="stylesheet">
 <script src="resources/js/jquery-3.7.1.min.js"></script>
 <script src="resources/js/trade.js"></script>
+<script src="resources/js/tradeformcheck.js"></script>
+<link rel="stylesheet" href="resources/css/style.css">
 
 </head>
 <body>

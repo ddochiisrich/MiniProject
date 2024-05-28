@@ -1,6 +1,8 @@
 package com.second.miniproject.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +19,6 @@ public class TradeDaoImpl implements TradeDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<Trade> tradeBoardList() {
-
-		return sqlSession.selectList(NAME_SPACE + ".tradeBoardList");
-	}
-
-	@Override
 	public Trade getTradeBoard(int ucno) {
 		
 		return sqlSession.selectOne(NAME_SPACE + ".getTradeBoard", ucno);
@@ -30,19 +26,46 @@ public class TradeDaoImpl implements TradeDao {
 
 	@Override
 	public void insertTradeBoard(Trade trade) {
-		// TODO Auto-generated method stub
+		sqlSession.insert(NAME_SPACE + ".insertTradeBoard", trade);
 		
 	}
 
 	@Override
 	public void updateTradeBoard(Trade trade) {
-		// TODO Auto-generated method stub
+		sqlSession.update(NAME_SPACE + ".updateTradeBoard", trade);
 		
 	}
 
 	@Override
 	public void deleteTradeBoard(int ucno) {
-		// TODO Auto-generated method stub
+		sqlSession.delete(NAME_SPACE + ".deleteTradeBoard", ucno);
+		
+	}
+
+	@Override
+	public List<Trade> tradeBoardList(int startRow, int num, String type, String keyword) {
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("startRow", startRow);
+		params.put("num", num);
+		params.put("type", type);
+		params.put("keyword", keyword);
+		return sqlSession.selectList(NAME_SPACE + ".tradeBoardList", params);
+	}
+
+	@Override
+	public int getBoardCount(String type, String keyword) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("type", type);
+		params.put("keyword", keyword);
+		
+		return sqlSession.selectOne(NAME_SPACE + ".getBoardCount");
+	}
+
+	@Override
+	public void incrementReadCount(int ucno) {
+	
+		sqlSession.update(NAME_SPACE + ".incrementReadCount", ucno);
 		
 	}
 

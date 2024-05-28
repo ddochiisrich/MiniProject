@@ -11,12 +11,106 @@
 	마이바티스 참고 사이트 - http://blog.mybatis.org/ - http://www.mybatis.org/mybatis-3/ko/index.html -->
 <mapper namespace="com.second.miniproject.mapper.TradeBoardMapper">
 
+	<update id="incrementReadCount">
+		UPDATE used_car
+		SET view_count = view_count + 1
+		WHERE ucno = #{ucno}
+	</update>
+
+	<!-- 게시글수 가져오기 -->
+	<select id="getBoardCount" parameterType="hashmap"  resultType="int">
+		SELECT
+			COUNT(ucno)
+		FROM used_car
+		<where>
+			<if test="type == 'cmanufacturer'">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'cyear'">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'cmmileage'">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'carea'">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'ccolor'">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'cfuelType'">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'ctransmission'">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+		</where>
+	</select>
+
+	<!-- 게시글 삭제하기 -->
+	<delete id="deleteTradeBoard">
+		DELETE FROM used_car
+		WHERE ucno = #{ucno}
+	</delete>
+
+	<!-- 게시글 수정 불러오기 -->
+	<select id="updateTradeBoard" parameterType="Trade">
+		UPDATE used_car
+		SET cname = #{cname},
+		cnumber = #{cnumber},
+		cmanufacturer = #{cmanufacturer},
+		cimg = #{cimg},
+		cyear = #{cyear},
+		cmileage = #{cmileage},
+		carea = #{carea},
+		cprice = #{cprice},
+		cshortment = #{cshortment},
+		cseller = #{cseller},
+		cseller_contact = #{csellerContact},
+		ccolor = #{ccolor},
+		ccomment = #{ccomment},
+		cfuel_type = #{cfuelType},
+		ctransmission = #{ctransmission},
+		ccondition = #{ccondition}
+		WHERE ucno = #{ucno};
+	</select>
+
+	<!-- 증고차 게시글 등록 -->
+	<insert id="insertTradeBoard" parameterType="Trade" useGeneratedKeys="true" keyProperty="ucno">
+		INSERT INTO used_car (cname, cnumber, cmanufacturer, cimg, cyear, cmileage, carea, cprice, cshortment, cseller, cseller_contact, ccolor, ccomment, cfuel_type, ctransmission, ccondition) 
+					VALUES (#{cname},#{cnumber},#{cmanufacturer},#{cimg},#{cyear},#{cmileage},#{carea},#{cprice},#{cshortment},#{cseller}, #{csellerContact}, #{ccolor}, #{ccomment},#{cfuelType},#{ctransmission},#{ccondition});
+	</insert>
+
 	<!-- 중고차 리스트 불러오기 -->
-	<select id="tradeBoardList" resultType="Trade" resultMap="usedCarResultMap">
+	<select id="tradeBoardList" parameterType="hashmap"  resultType="Trade" resultMap="usedCarResultMap">
 		SELECT
 		*
 		FROM used_car
+		<where>
+			<if test="type == 'cmanufacturer'">
+				cmanufacturer LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'cyear'">
+				cyear LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'cmmileage'">
+				cmmileage LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'carea'">
+				carea LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'ccolor'">
+				ccolor LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'cfuelType'">
+				cfuelType LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'ctransmission'">
+				ctransmission LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+		</where>
 		ORDER BY ucno DESC
+		LIMIT #{startRow}, #{num}
 	</select>
 	
 	<!-- 중고차 상세리스트 불러오기 -->
