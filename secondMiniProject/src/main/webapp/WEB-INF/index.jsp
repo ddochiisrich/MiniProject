@@ -11,6 +11,7 @@
 <script src="resources/js/trade.js"></script>
 <script src="resources/js/tradeformcheck.js"></script>
 <link rel="stylesheet" href="resources/css/style.css">
+<script type="text/javascript" src="resources/js/member.js"></script>
 
 </head>
 <body>
