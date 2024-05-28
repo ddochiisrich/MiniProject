@@ -1,14 +1,38 @@
 package com.second.miniproject.domain;
 
-public class MemberShip {
-	// 회원가입
-//	- 비밀번호 확인
-// 이름 - name, 생일 -, 주민번호 -,전화번호 - phone, 이메일 - email, 주소 -, 아이디 -, 비밀번호(비밀번호 확인) -
-	private String name, id, pass, email, mobile;
-	private String zipcode, address1, address2; // 주소 관련
-	private boolean emailGet;
+import java.sql.Timestamp;
+
+public class MemberShip {	
 	
-	public MemberShip() {	}
+	private String name, id, pass, email, mobile;
+	private String zipcode, address1, address2;
+	private boolean  emailGet;
+	private Timestamp regDate;	
+	private String idcheck;
+	private String file1;
+
+	public String getFile1() {
+		return file1;
+	}
+
+
+	public void setFile1(String file1) {
+		this.file1 = file1;
+	}
+
+
+	public String getIdcheck() {
+		return idcheck;
+	}
+
+
+	public void setIdcheck(String idcheck) {
+		this.idcheck = idcheck;
+	}
+
+
+	public MemberShip() { }	
+	
 	
 	public String getName() {
 		return name;
@@ -64,6 +88,10 @@ public class MemberShip {
 	public void setEmailGet(boolean emailGet) {
 		this.emailGet = emailGet;
 	}
-	
-	
+	public Timestamp getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Timestamp regDate) {
+		this.regDate = regDate;
+	}	
 }
