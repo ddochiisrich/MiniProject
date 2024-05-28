@@ -14,4 +14,10 @@ public class BricksController {
 		return "BricksMain";
 	}
 	
+//	//@GetMapping("/used_car_board")
+//	public String BricksTradeBoard(Model model) {
+//				
+//		return "usedCarTradeBoard";
+//	}
+	
 }
