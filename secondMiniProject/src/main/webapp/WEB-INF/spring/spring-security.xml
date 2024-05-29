@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/security 
 		http://www.springframework.org/schema/beans/spring-security-4.2.xsd">
 
-	<bean id="bcryptPasswordEncoder"
+	<bean id="BCryptPasswordEncoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 		
 </beans>

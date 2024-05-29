@@ -33,6 +33,18 @@
 					</c:if>
 				</div>
 				&nbsp;
+<!-- <<<<<<< HEAD -->
+				<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-list"></i></button>
+
+					<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+					  <div class="offcanvas-header">
+					    <h5 class="offcanvas-title" id="offcanvasRightLabel">MENU</h5>
+					    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					  </div>
+					  <div class="offcanvas-body">
+					    <a href="used_car_board">중고거래 게시판</a>
+					  </div>
+=======
 				<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 					<i class="bi bi-list"></i>
 				</button>
@@ -40,6 +52,7 @@
 					<div class="offcanvas-header">
 						<h5 class="offcanvas-title" id="offcanvasRightLabel">MENU</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<!-- >>>>>>> branch 'hyhy' of https://github.com/ddochiisrich/MiniProject.git -->
 					</div>
 					<div class="offcanvas-body">CONTENT</div>
 				</div>
