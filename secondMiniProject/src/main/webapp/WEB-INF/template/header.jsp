@@ -42,6 +42,9 @@
 						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 					</div>
 					<div class="offcanvas-body">CONTENT</div>
+					<div class="offcanvas-body">
+							<a href="writeForm">WRITING</a>
+					</div>
 				</div>
 			</div>
 		</div>

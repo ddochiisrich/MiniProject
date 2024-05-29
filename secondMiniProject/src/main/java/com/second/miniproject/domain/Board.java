@@ -1,14 +1,14 @@
 package com.second.miniproject.domain;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Board {
-//	- 차종을 입력 - cname, 사고일지 - content, 사진 file1, 주행거리 km, 타이어 tire, 냉각수 coolant, 배터리 battery, 와이퍼 wiper, 에어컨 - aircon, no - number
+//	- 차종을 입력 - cname, 차량번호 - cnumber, 사진 file1, 주행거리 km, 타이어 tire, 냉각수 coolant, 배터리 battery, 와이퍼 wiper, 에어컨 - aircon, no - number
 	// regDate - 시간 , readCount - 조회수
 	// recommend 추천, thank 좋아요
 	private int no;
 	private String cname;
-	private String notent;
+	private String cnumber;
 	private String km; // int 로 받을지 고민중
 	private String tire;
 	private String coolant;
@@ -16,14 +16,19 @@ public class Board {
 	private String wiper;
 	private String aircon;
 	private Timestamp regDate;
-	private int readCount;	
-	
-	public Board(int no, String cname, String notent, String km, String tire, String coolant, String battery,
-			String wiper, String aircon, Timestamp regDate, int readCount) {
+	private int readCount;
+	private String file2;
+
+	public Board() {
+		
+	}
+
+	public Board(int no, String cname, String cnumber, String km, String tire, String coolant, String battery,
+			String wiper, String aircon, Timestamp regDate, int readCount, String file2) {
 		super();
 		this.no = no;
 		this.cname = cname;
-		this.notent = notent;
+		this.cnumber = cnumber;
 		this.km = km;
 		this.tire = tire;
 		this.coolant = coolant;
@@ -32,6 +37,23 @@ public class Board {
 		this.aircon = aircon;
 		this.regDate = regDate;
 		this.readCount = readCount;
+		this.file2 = file2;
+	}
+
+	public String getCnumber() {
+		return cnumber;
+	}
+
+	public void setCnumber(String cnumber) {
+		this.cnumber = cnumber;
+	}
+
+	public String getFile2() {
+		return file2;
+	}
+
+	public void setFile2(String file2) {
+		this.file2 = file2;
 	}
 	
 	public int getNo() {
@@ -45,12 +67,6 @@ public class Board {
 	}
 	public void setCname(String cname) {
 		this.cname = cname;
-	}
-	public String getNotent() {
-		return notent;
-	}
-	public void setNotent(String notent) {
-		this.notent = notent;
 	}
 	public String getKm() {
 		return km;
