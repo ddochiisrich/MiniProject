@@ -50,6 +50,10 @@ public class TradeDaoImpl implements TradeDao {
 		params.put("num", num);
 		params.put("type", type);
 		params.put("keyword", keyword);
+		
+		  System.out.println("Params: " + params);
+
+		
 		return sqlSession.selectList(NAME_SPACE + ".tradeBoardList", params);
 	}
 
@@ -59,7 +63,7 @@ public class TradeDaoImpl implements TradeDao {
 		params.put("type", type);
 		params.put("keyword", keyword);
 		
-		return sqlSession.selectOne(NAME_SPACE + ".getBoardCount");
+		return sqlSession.selectOne(NAME_SPACE + ".getBoardCount", params);
 	}
 
 	@Override

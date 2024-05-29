@@ -26,6 +26,7 @@
 	
 	<context:component-scan base-package="com.second.miniproject" />
 	
-	
+
+
 	
 </beans:beans>

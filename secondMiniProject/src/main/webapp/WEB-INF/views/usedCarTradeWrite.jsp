@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="container mt-5">
 		<h2 class="mb-4">판매할 중고차 정보 입력</h2>
-		<form action="registProcess" method="post" id="registForm" name="registForm">
+		<form action="registProcess" method="post" id="registForm" name="registForm" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-md-6">		
 					<div class="form-group">
@@ -24,7 +24,7 @@
 					</div>
 					<div class="form-group">
 						<label for="cmanufacturer">제조사:</label>
-						<select class="form-control" id="cmanufacturer" name="cmanufacturer">
+						<select class="form-control" id="cmanufacturer" name="cmanufacturer" >
 							<option value="">제조사 선택</option>
 							<option value="BMW">BMW</option>
 							<option value="도요타">도요타</option>
@@ -49,8 +49,8 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="cimg">상품이미지:</label>
-						<input type="file" class="form-control" id="cimg" name="cimg">
+						<label for="cimg" class="form-label">상품이미지:</label>
+						<input type="file" class="form-control" id="cimg" name="cimg1">
 					</div>
 					<div class="form-group">
 						<label for="cyear">연식:</label>

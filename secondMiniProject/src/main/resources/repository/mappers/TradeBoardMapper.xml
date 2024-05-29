@@ -23,27 +23,32 @@
 			COUNT(ucno)
 		FROM used_car
 		<where>
-			<if test="type == 'cmanufacturer'">
-				title LIKE CONCAT('%', #{keyword}, '%')
+			<if test="type == 'manufacturer'">
+				cmanufacturer LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="type == 'cyear'">
-				title LIKE CONCAT('%', #{keyword}, '%')
+				cyear LIKE CONCAT('%', #{keyword}, '%')
 			</if>
-			<if test="type == 'cmmileage'">
-				title LIKE CONCAT('%', #{keyword}, '%')
+			<if test="type == 'cmileage'">
+				<if test="keyword == '100000_plus'">
+                    cmileage &gt; 100000
+                </if>
+                <if test="keyword != '100000_plus'">
+                    cmileage &lt; #{keyword}
+                </if>
 			</if>
 			<if test="type == 'carea'">
-				title LIKE CONCAT('%', #{keyword}, '%')
+				carea LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="type == 'ccolor'">
-				title LIKE CONCAT('%', #{keyword}, '%')
+				ccolor LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="type == 'cfuelType'">
-				title LIKE CONCAT('%', #{keyword}, '%')
+				cfuel_type LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="type == 'ctransmission'">
-				title LIKE CONCAT('%', #{keyword}, '%')
-			</if>
+            	ctransmission LIKE CONCAT('%', #{keyword}, '%')
+        	</if>
 		</where>
 	</select>
 
@@ -87,14 +92,19 @@
 		*
 		FROM used_car
 		<where>
-			<if test="type == 'cmanufacturer'">
+			<if test="type == 'manufacturer'">
 				cmanufacturer LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="type == 'cyear'">
 				cyear LIKE CONCAT('%', #{keyword}, '%')
 			</if>
-			<if test="type == 'cmmileage'">
-				cmmileage LIKE CONCAT('%', #{keyword}, '%')
+			<if test="type == 'cmileage'">
+				<if test="keyword == '100000_plus'">
+                    cmileage &gt; 100000
+                </if>
+                <if test="keyword != '100000_plus'">
+                    cmileage &lt; #{keyword}
+                </if>
 			</if>
 			<if test="type == 'carea'">
 				carea LIKE CONCAT('%', #{keyword}, '%')
@@ -103,7 +113,7 @@
 				ccolor LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="type == 'cfuelType'">
-				cfuelType LIKE CONCAT('%', #{keyword}, '%')
+				cfuel_type LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="type == 'ctransmission'">
 				ctransmission LIKE CONCAT('%', #{keyword}, '%')
