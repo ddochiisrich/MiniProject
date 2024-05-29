@@ -51,7 +51,7 @@ public class TradeDaoImpl implements TradeDao {
 		params.put("type", type);
 		params.put("keyword", keyword);
 		
-		  System.out.println("Params: " + params);
+//		  System.out.println("Params: " + params);
 
 		
 		return sqlSession.selectList(NAME_SPACE + ".tradeBoardList", params);

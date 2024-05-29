@@ -25,10 +25,7 @@ public class TradeAjaxController {
 	        @RequestParam(value="keyword", required=false, defaultValue="null") String keyword) {
 	    
 	    Map<String, Object> modelMap = tradeBoardService.tradeBoardList(pageNum, type, keyword);
-	    
-	    System.out.println("타입 : " + type);
-	    System.out.println("키워드 : " + keyword);
-	    
+
 	    // 페이징 정보 계산
 	    int totalRecords = tradeBoardService.getBoardCount(type, keyword);
 	    int recordsPerPage = 10; // 페이지당 레코드 수
@@ -36,10 +33,7 @@ public class TradeAjaxController {
 	    int pageGroup = 10; // 페이지 그룹 크기
 	    int startPage = ((pageNum - 1) / pageGroup) * pageGroup + 1;
 	    int endPage = Math.min(startPage + pageGroup - 1, totalPages);
-	    
-	    System.out.println("총 페이지네이션 수 : " + totalPages);
-	    System.out.println("총 페이지수 : " + totalRecords);
-	    System.out.println("페이지당 게시글수 : " + recordsPerPage);
+
 	    
 	    // 페이징 정보 추가
 	    modelMap.put("startPage", startPage);
