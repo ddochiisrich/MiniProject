@@ -92,7 +92,7 @@ $(function(){
 			dataType: "json",		// 응답으로 받을 결과 데이터 형식
 			success: function(resData){ 
 				// 단순 성공이 아닌 ajax가 성공되고 응답 데이터(서버로부터 받은 데이터)를 dataType에 맞게 parsing이 완료 되면 호출되는 callback
-				console.log(resData);
+				console.log(resData); 
 				if(resData.result) { // 비밀번호가 맞으면
 					// 비밀번호 확인 버튼을 비활성화 - disabled
 					$("#oldPassComment").text("비밀번호가 확인 되었습니다!");
@@ -269,7 +269,7 @@ $(function(){
 			alert("이름이 입력되지 않았습니다.");
 			return false;
 		}
-		if(id.length <= 5) {
+		if(id.length < 5) {
 			alert("아이디는 5자 이상입니다.");
 			return false;
 		}

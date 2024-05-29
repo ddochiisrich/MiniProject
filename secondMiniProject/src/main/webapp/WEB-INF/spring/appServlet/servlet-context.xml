@@ -31,4 +31,14 @@
     <mvc:view-controller path="/joinForm" view-name="member/memberJoinForm"/>
     <mvc:view-controller path="/loginForm" view-name="loginForm"/>
 
+    <!-- Interceptors -->
+    <bean id="loginCheckInterceptor" class="com.second.miniproject.interceptor.LoginCheckInterceptor" />
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/registcar" />
+            <ref bean="loginCheckInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

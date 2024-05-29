@@ -18,6 +18,8 @@ public class Board {
 	private Timestamp regDate;
 	private int readCount;	
 	
+	public Board() {}
+	
 	public Board(int no, String cname, String notent, String km, String tire, String coolant, String battery,
 			String wiper, String aircon, Timestamp regDate, int readCount) {
 		super();

@@ -5,6 +5,10 @@ import java.io.File;
 import java.io.IOException;
 
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +24,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.second.miniproject.domain.CarInfo;
 import com.second.miniproject.domain.MemberShip;
+import com.second.miniproject.service.CarInfoService;
 import com.second.miniproject.service.MemberService;
 
 @Controller
@@ -31,6 +37,9 @@ public class MemberShipController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private CarInfoService carInfoService ;
 
 	@RequestMapping("/memberUpdateForm")
 	public String memberUpdateForm() {
@@ -133,8 +142,38 @@ public class MemberShipController {
 			return null;
 		}
 
+		
 		MemberShip member = memberService.getMember(id);
+		
 		session.setAttribute("isLogin", true);
+		
+		
+		boolean check = carInfoService.carInfoCheck(id);
+		
+
+		// 맴버가 자동차 등록을했는지 확인
+		session.setAttribute("carInfoCheck", check);
+		
+		// 자동차가 있으면 자동차 정보를 담는다 .
+		if (check) {
+	        CarInfo info = carInfoService.carInfo(id);
+	        session.setAttribute("info", info);
+
+	        // Calculate the number of days since createdAt
+	        if (info != null && info.getCreatedAt() != null) {
+	            LocalDate createdAt = info.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+	            LocalDate now = LocalDate.now();
+	            long diffInDays = ChronoUnit.DAYS.between(createdAt, now);
+	            session.setAttribute("diffInDays", diffInDays);
+	        } else {
+	            session.setAttribute("diffInDays", 0);
+	        }
+	    } else {
+	        session.setAttribute("diffInDays", 0);
+	    }
+
+		
+		
 		// session.setAttribute("member", member);
 		model.addAttribute("membership", member);
 
@@ -150,3 +189,4 @@ public class MemberShipController {
 	}
 
 }
+;

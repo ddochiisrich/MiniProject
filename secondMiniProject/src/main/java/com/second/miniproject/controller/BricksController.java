@@ -4,20 +4,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.second.miniproject.service.CarInfoService;
+
 @Controller
 public class BricksController {
 
+	private CarInfoService carInfoService;
+	
 	@GetMapping("/main")
 	public String BricksMain(Model model) {
-		model.addAttribute("msg", "이건 메인페이지다 이말이야!!!!!!!!!!");
-		
+
 		return "BricksMain";
 	}
-	
-//	//@GetMapping("/used_car_board")
-//	public String BricksTradeBoard(Model model) {
-//				
-//		return "usedCarTradeBoard";
-//	}
 	
 }

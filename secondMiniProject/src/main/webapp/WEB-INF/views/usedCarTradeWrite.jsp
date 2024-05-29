@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,24 +178,28 @@
 				<div class="col-md-6">				
 					<div class="form-group">
 						<label for="cseller">판매자:</label>
-						<input type="text" class="form-control" id="cseller" name="cseller">
+						<input type="text" class="form-control" id="cseller" name="cseller" value="${ sessionScope.membership.name }">
 					</div>
-					<div class="form-group">
-					    <label for="cseller_contact">판매자 연락처:</label><br>
-					    <div class="input-group">
-					        <input type="text" class="form-control" id="cseller_contact1" name="cseller_contact1" maxlength="3" pattern="[0-9]{3}" placeholder="010">
-					        <div class="input-group-prepend input-group-append">
-					            <span class="input-group-text">-</span>
-					        </div>
-					        <input type="text" class="form-control" id="cseller_contact2" name="cseller_contact2" maxlength="4" pattern="[0-9]{4}" placeholder="1234">
-					        <div class="input-group-prepend input-group-append">
-					            <span class="input-group-text">-</span>
-					        </div>
-					        <input type="text" class="form-control" id="cseller_contact3" name="cseller_contact3" maxlength="4" pattern="[0-9]{4}" placeholder="5678">
-					    </div>
-					    <small class="form-text text-muted">연락처는 숫자만 입력하세요. 예: 010-1234-5678</small>
-					</div>
-					<div class="form-group">
+					<!-- EL을 사용하여 모바일 번호를 분리 -->
+                    <c:set var="mobile" value="${sessionScope.membership.mobile}" />
+                    <c:set var="mobileParts" value="${fn:split(mobile, '-')}" />
+                    
+                    <div class="form-group">
+                        <label for="cseller_contact">판매자 연락처:</label><br>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="cseller_contact1" name="cseller_contact1" maxlength="3" pattern="[0-9]{3}" value="${mobileParts[0]}">
+                            <div class="input-group-prepend input-group-append">
+                                <span class="input-group-text">-</span>
+                            </div>
+                            <input type="text" class="form-control" id="cseller_contact2" name="cseller_contact2" maxlength="4" pattern="[0-9]{4}" value="${mobileParts[1]}">
+                            <div class="input-group-prepend input-group-append">
+                                <span class="input-group-text">-</span>
+                            </div>
+                            <input type="text" class="form-control" id="cseller_contact3" name="cseller_contact3" maxlength="4" pattern="[0-9]{4}" value="${mobileParts[2]}">
+                        </div>
+                        <small class="form-text text-muted">연락처는 숫자만 입력하세요. 예: 010-1234-5678</small>
+                    </div>
+										<div class="form-group">
 						<label for="ccomment">상세 설명:</label>
 						<textarea class="form-control" id="ccomment" name="ccomment" rows="5"></textarea>
 					</div>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,40 +61,68 @@
 	    <span class="visually-hidden">Next</span>
 	  </button>
 	</div>
-
 	<!-- 차량 디테일 -->
-	<div class="border rounded border-dark mt-5" style="padding:0px 12px; background-image: url('./resources/images/Hyundai_Sonata_(DN8).jpeg');  background-repeat: no-repeat; background-position: center; background-size: cover;" >
-		<div class="row mb-1 pt-5 px-5">
-			<div class="col text-light">
-				<div class="row">
-					<h2>쏘우나타</h2>
-				</div>
-				<div class="row">
-					<h5>000일 째 관리중</h5>
-				</div>
-			</div>	
-			<div class="col text-end">
-				<img src="./resources/images/HYUNDAI.svg" class="w-50">
-			</div>	
-		</div>
-
-		<div class="row mb-5 p-5">
-			<div class="col">
-				<button type="button" class="btn btn-outline-secondary text-light btn-lg">내 차 정보</button>
-			</div>		
-		</div>
-		<div class="row rounded-bottom align-items-center p-3" style="background-color: rgba(0, 0, 0, 0.5);">
-			<div class="col-6 text-light py-4">
-				<span>누적 주행거리 ></span><br>
-				<span class="fs-1">17,000</span><span>km</span>
-			</div>		
-			<div class="col-6 text-light py-4">
-				<span>평균 연비 ></span><br>
-				<span class="fs-1">18.6</span><span>km/L</span>
+	
+	<!-- 로그인을 안한상태 -->
+	<c:if test="${sessionScope.carInfoCheck == null}">
+		<div class="border rounded border-dark mt-5 d-flex align-items-center justify-content-center" style="width:1360px; height:370px; padding:0px 12px;" >
+			<div class="row">
+				<div class="col">
+					<div class="d-grid gap-2">
+						<h1>로그인 또는 회원가입을 해주세요</h1>
+					</div>
+				</div>	
 			</div>
 		</div>
-	</div>
+	</c:if>
 	
+	<!-- 로그인을 했으나 자기 차량등록을 안한상태 -->
+	<c:if test="${sessionScope.carInfoCheck == false}">
+		<div class="border rounded border-dark mt-5 d-flex align-items-center justify-content-center" style="width:1360px; height:370px; padding:0px 12px;" >
+			<div class="row">
+				<div class="col">
+					<div class="d-grid gap-2">
+						<button class="btn btn-primary btn-lg" type="button">차량등록하기</button>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</c:if>
+	
+	<!-- 로그인을 한 후 자기차량이 등록되있는 상태 -->
+	<c:if test="${sessionScope.carInfoCheck == true}">
+		<div class="border rounded border-dark mt-5" style="padding:0px 12px; background-image: url('./resources/upload/default_car_image.png');  background-repeat: no-repeat; background-position: center; background-size: cover;" >
+			<div class="row mb-1 pt-5 px-5">
+				<div class="col text-light">
+					<div class="row">
+						<h1>${sessionScope.info.carNickname}</h1>
+					</div>
+					<div class="row">
+						<h5>${(sessionScope.diffInDays) + 1}일 째 관리중</h5>
+					</div>
+				</div>	
+				<div class="col text-end">
+					<img src="./resources/images/HYUNDAI.svg" class="w-50">
+				</div>	
+			</div>
+	
+			<div class="row mb-5 p-5">
+				<div class="col">
+					<button type="button" class="btn btn-outline-secondary text-light btn-lg">내 차 정보</button>
+				</div>		
+			</div>
+			<div class="row rounded-bottom align-items-center p-3" style="background-color: rgba(0, 0, 0, 0.5);">
+				<div class="col-6 text-light py-4">
+					<span>누적 주행거리 ></span><br>
+					<span class="fs-1">${sessionScope.info.carMileage}</span><span>km</span>
+				</div>		
+				<div class="col-6 text-light py-4">
+					<span>평균 연비 ></span><br>
+					<span class="fs-1">${sessionScope.info.carFuelAverage}</span><span>km/L</span>
+				</div>
+			</div>
+		</div>
+	</c:if>
 	
 	
 	<!-- 최근기록 구간 -->
