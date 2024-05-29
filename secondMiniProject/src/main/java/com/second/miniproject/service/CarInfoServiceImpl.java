@@ -24,4 +24,10 @@ public class CarInfoServiceImpl implements CarInfoService {
 		return carInfoDao.carInfo(id);
 	}
 
+	@Override
+	public void insertCarInfo(CarInfo carInfo) {
+		
+		carInfoDao.insertCarInfo(carInfo);
+	}
+
 }

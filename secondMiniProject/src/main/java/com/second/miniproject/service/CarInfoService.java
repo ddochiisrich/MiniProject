@@ -7,4 +7,6 @@ public interface CarInfoService {
 	public abstract boolean carInfoCheck(String id);
 	
 	public abstract CarInfo carInfo(String id);
+	
+	public abstract void insertCarInfo(CarInfo carInfo);
 }

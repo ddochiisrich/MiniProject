@@ -26,4 +26,10 @@ public class CarInfoDaoImpl implements CarInfoDao {
 		return sqlSession.selectOne(NAME_SPACE + ".carInfo", id);
 	}
 
+	@Override
+	public void insertCarInfo(CarInfo carInfo) {
+		
+		sqlSession.insert(NAME_SPACE + ".insertCarInfo", carInfo);
+	}
+
 }

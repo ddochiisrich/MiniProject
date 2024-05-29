@@ -8,4 +8,6 @@ public interface CarInfoDao {
 	
 	public abstract CarInfo carInfo(String id);
 	
+	public abstract void insertCarInfo(CarInfo carInfo);
+	
 }

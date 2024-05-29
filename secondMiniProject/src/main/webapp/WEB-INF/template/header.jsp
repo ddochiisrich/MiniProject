@@ -29,7 +29,7 @@
 				<div>
 					<c:if test="${sessionScope.isLogin}">
 						<img src="/Profile/${sessionScope.membership.file1 }" class="rounded-circle">
-						${sessionScope.membership.name } 님
+						${sessionScope.membership.name } 님 ${sessionScope.membership.id } 
 					</c:if>
 				</div>
 				&nbsp;

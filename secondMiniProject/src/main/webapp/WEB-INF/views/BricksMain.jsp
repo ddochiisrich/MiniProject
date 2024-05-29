@@ -82,7 +82,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="d-grid gap-2">
-						<button class="btn btn-primary btn-lg" type="button">차량등록하기</button>
+						<button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button">차량등록하기</button>
 					</div>
 				</div>	
 			</div>
@@ -91,7 +91,7 @@
 	
 	<!-- 로그인을 한 후 자기차량이 등록되있는 상태 -->
 	<c:if test="${sessionScope.carInfoCheck == true}">
-		<div class="border rounded border-dark mt-5" style="padding:0px 12px; background-image: url('./resources/upload/default_car_image.png');  background-repeat: no-repeat; background-position: center; background-size: cover;" >
+		<div class="border rounded border-dark mt-5" style="padding:0px 12px; background-image: url('./resources/upload/${sessionScope.info.carImg}');  background-repeat: no-repeat; background-position: center; background-size: cover;" >
 			<div class="row mb-1 pt-5 px-5">
 				<div class="col text-light">
 					<div class="row">
@@ -223,6 +223,123 @@
 			<button  type="button" class="btn btn-secondary">보기</button>
 		</div>
 	</div>
+
+<!-- 모달창 -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">차량 등록하기</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="carForm" action="infoRegistProcess" method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="cname" class="col-form-label">차종:</label>
+            <input type="text" class="form-control" id="cname" name="cname" required>
+          </div>
+          <div class="mb-3">
+            <label for="carNickname" class="col-form-label">차 별명:</label>
+            <input type="text" class="form-control" id="carNickname" name="carNickname" required>
+          </div>
+          <div class="mb-3">
+            <label for="cnumber" class="col-form-label">차량번호:</label>
+            <input type="text" class="form-control" id="cnumber" name="cnumber" required>
+          </div>
+          <div class="mb-3">
+            <label for="cmanufacturer" class="col-form-label">제조사:</label>
+            <select class="form-control" id="cmanufacturer" name="cmanufacturer" required>
+              <option value="">제조사 선택</option>
+              <option value="BMW">BMW</option>
+              <option value="도요타">도요타</option>
+              <option value="폭스바겐">폭스바겐</option>
+              <option value="포드">포드</option>
+              <option value="벤츠">벤츠</option>
+              <option value="혼다">혼다</option>
+              <option value="GM">GM</option>
+              <option value="현대">현대</option>
+              <option value="닛산">닛산</option>
+              <option value="아우디">아우디</option>
+              <option value="테슬라">테슬라</option>
+              <option value="페라리">페라리</option>
+              <option value="포르쉐">포르쉐</option>
+              <option value="람보르기니">람보르기니</option>
+              <option value="기아">기아</option>
+              <option value="미쓰비시">미쓰비시</option>
+              <option value="수바루">수바루</option>
+              <option value="쉐보레">쉐보레</option>
+              <option value="볼보">볼보</option>
+              <option value="재규어">재규어</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="cimg" class="col-form-label">차량이미지:</label>
+            <input type="file" class="form-control" id="cimg" name="cimg1">
+          </div>
+          <div class="mb-3">
+            <label for="cyear" class="col-form-label">연식:</label>
+            <input type="text" class="form-control" id="cyear" name="cyear" required>
+          </div>
+          <div class="mb-3">
+            <label for="cmileage" class="col-form-label">누적주행거리:</label>
+            <input type="text" class="form-control" id="cmileage" name="cmileage" required>
+          </div>
+          <div class="mb-3">
+            <label for="ccolor" class="col-form-label">차량 색상:</label>
+            <select class="form-control" id="ccolor" name="ccolor" required>
+              <option value="">색상 선택</option>
+              <option value="흰색">흰색</option>
+              <option value="검정색">검정색</option>
+              <option value="회색">회색</option>
+              <option value="빨간색">빨간색</option>
+              <option value="파란색">파란색</option>
+              <option value="초록색">초록색</option>
+              <option value="노란색">노란색</option>
+              <option value="주황색">주황색</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="cfuelType" class="col-form-label">연료 종류:</label>
+            <select class="form-control" id="cfuelType" name="cfuelType" required>
+              <option value="">연료 종류 선택</option>
+              <option value="휘발유">휘발유</option>
+              <option value="경유">경유</option>
+              <option value="전기">전기</option>
+              <option value="하이브리드">하이브리드</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="ctransmission" class="col-form-label">변속기:</label>
+            <select class="form-control" id="ctransmission" name="ctransmission" required>
+              <option value="">변속기 종류 선택</option>
+              <option value="오토">오토</option>
+              <option value="수동">수동</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="cenginOil" class="col-form-label">마지막 엔진오일교체 시기:</label>
+            <input type="text" class="form-control" id="cenginOil" name="cenginOil" required>
+          </div>
+          <div class="mb-3">
+            <label for="cairFilter" class="col-form-label">마지막 에어컨필터교체 시기:</label>
+            <input type="text" class="form-control" id="cairFilter" name="cairFilter" required>
+          </div>
+          <div class="mb-3">
+            <label for="cTire" class="col-form-label">마지막 타이어교체 시기:</label>
+            <input type="text" class="form-control" id="cTire" name="cTire" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            <button type="submit" class="btn btn-primary">등록</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 </body>
 </html>

@@ -22,26 +22,24 @@
 -->
 <mapper namespace="com.second.miniproject.mapper.CarInfoMapper">
 
+	<insert id="insertCarInfo" parameterType="carInfo">
+	    INSERT INTO car_info (id, carNickname, cname, cnumber, cmanufacturer, carImg, cyear, carMileage, ccolor, cfuelType, ctransmission, cenginOil, cairFilter, cTire, createdAt)
+	    VALUES (#{id}, #{carNickname}, #{cname}, #{cnumber}, #{cmanufacturer}, #{carImg}, #{cyear}, #{cmileage}, #{ccolor}, #{cfuelType}, #{ctransmission}, #{cenginOil}, #{cairFilter}, #{cTire}, SYSDATE())
+	</insert>
+	
+
 	<select id="carInfoCheck" parameterType="String" resultType="boolean">
 		SELECT CASE WHEN COUNT(*) > 0 THEN TRUE ELSE FALSE END
         FROM car_info
         WHERE id = #{id}
 	</select>
 	
-	<select id="carInfo" resultType="CarInfo" resultMap="carInfoMap">
+	<select id="carInfo" resultType="CarInfo">
 		SELECT *
 		FROM car_info
 		WHERE id = #{id}
 	</select>
-	<resultMap id="carInfoMap" type="CarInfo">
-		 <id property="no" column="no" />
-        <result property="carNickname" column="car_nickname" />
-        <result property="carImg" column="car_img" />
-        <result property="managementDays" column="management_days" />
-        <result property="carMileage" column="car_mileage" />
-        <result property="carFuelAverage" column="car_fuel_average" />
-        <result property="createdAt" column="created_at" />
-	</resultMap>
+
 </mapper>	
 
 
