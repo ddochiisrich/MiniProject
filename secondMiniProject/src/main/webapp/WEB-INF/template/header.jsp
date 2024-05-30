@@ -9,32 +9,34 @@
 		<div class="row align-items-center">
 			<div class="col-2 text-end">
 				<a href="main">
-					<img src="./resources/images/logo.png" class="w-50">
+					<img src="./resources/images/logo.png" class="w-75">
 				</a>	
 			</div>
 			<div class="col-7 text-end">
-				<a class="link-dark link-underline-opacity-0" href='${sessionScope.isLogin ? "logout" : "loginForm"}' >
+				<a class="link-dark link-underline-opacity-0 fs-5" href='${sessionScope.isLogin ? "logout" : "loginForm"}' >
 					${sessionScope.isLogin ? "SIGN OUT" : "SING IN" }</a>
 				&nbsp;|&nbsp;
 				<!-- 회원가입 폼 joinForm 으로 이동 -->
 				<c:if test="${not sessionScope.isLogin }">
-					<a href="joinForm" class="link-dark link-underline-opacity-0">SIGN UP</a>
+					<a href="joinForm" class="link-dark link-underline-opacity-0 fs-5">SIGN UP</a>
 				</c:if>
 				<c:if test="${sessionScope.isLogin }">
-					<a href="memberUpdateForm" class="link-dark link-underline-opacity-0">CORRECTION</a>
+					<a href="memberUpdateForm" class="link-dark link-underline-opacity-0 fs-5">PROFILE</a>
 				</c:if>
 			</div>
-			<div class="col-3 text-start">
+			<div class="col-3 text-end">
 				&nbsp;
 				<div>
 					<c:if test="${sessionScope.isLogin}">
-						<img src="/Profile/${sessionScope.membership.file1 }" class="rounded-circle">
-						${sessionScope.membership.name } 님 ${sessionScope.membership.id } 
+						<img src="./resources/images/profile.webp" class="rounded-circle" style="width:50px;">
+						<span class="fs-5"><strong>${sessionScope.membership.name }</strong> 님</span>
 					</c:if>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<button class="btn fs-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-list"></i></button>
 				</div>
 				&nbsp;
 <!-- <<<<<<< HEAD -->
-				<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-list"></i></button>
+				
 
 					<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
 					  <div class="offcanvas-header">
@@ -44,17 +46,6 @@
 					  <div class="offcanvas-body">
 					    <a href="used_car_board">중고거래 게시판</a>
 					  </div>
-=======
-				<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-					<i class="bi bi-list"></i>
-				</button>
-				<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-					<div class="offcanvas-header">
-						<h5 class="offcanvas-title" id="offcanvasRightLabel">MENU</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-<!-- >>>>>>> branch 'hyhy' of https://github.com/ddochiisrich/MiniProject.git -->
-					</div>
-					<div class="offcanvas-body">CONTENT</div>
 				</div>
 			</div>
 		</div>

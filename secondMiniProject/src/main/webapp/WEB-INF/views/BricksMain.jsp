@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 
 <!DOCTYPE html>
 <html>
 <head>
+
+<style>
+	body {
+    background-color: white;
+}
+</style>
+
 <meta charset="UTF-8">
 <title>Bricks</title>
 </head>
@@ -39,28 +46,7 @@
 		</div>
 	</div>
 	
-	<!-- 광고 캐러셀 --> 
-	<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-	  <div class="carousel-inner">
-	    <div class="carousel-item active">
-	      <img src="https://via.placeholder.com/1296x100" class="d-block w-100">
-	    </div>
-	    <div class="carousel-item">
-	      <img src="https://via.placeholder.com/1296x100" class="d-block w-100">
-	    </div>
-	    <div class="carousel-item">
-	      <img src="https://via.placeholder.com/1296x100" class="d-block w-100">
-	    </div>
-	  </div>
-	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	    <span class="visually-hidden">Previous</span>
-	  </button>
-	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	    <span class="visually-hidden">Next</span>
-	  </button>
-	</div>
+
 	<!-- 차량 디테일 -->
 	
 	<!-- 로그인을 안한상태 -->
@@ -110,7 +96,7 @@
 	
 			<div class="row mb-5 p-5">
 				<div class="col">
-					<button type="button" class="btn btn-outline-secondary text-light btn-lg">내 차 정보</button>
+					<button type="button" class="btn btn-outline-secondary text-light btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">내 차 정보</button>
 				</div>		
 			</div>
 			<div class="row rounded-bottom align-items-center p-3" style="background-color: rgba(0, 0, 0, 0.5);">
@@ -128,7 +114,29 @@
 		</div>
 	</c:if>
 	</div>
-	
+
+		<!-- 광고 캐러셀 --> 
+	<div id="carouselExampleAutoplaying" class="carousel slide mt-3" data-bs-ride="carousel">
+	  <div class="carousel-inner">
+	    <div class="carousel-item active">
+	      <img src="./resources/images/carousel01.webp" class="d-block w-100">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="./resources/images/carousel02.jpeg" class="d-block w-100">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="./resources/images/carousel03.jpeg" class="d-block w-100">
+	    </div>
+	  </div>
+	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Previous</span>
+	  </button>
+	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Next</span>
+	  </button>
+	</div>
 	
 	<!-- 최근기록 구간 -->
 	<div class="row mt-5">
@@ -136,7 +144,6 @@
 			<h2>최근 기록</h2>
 		</div>
 		<div class="col-8 text-end px-5">
-			<button  type="button" class="btn btn-secondary">더보기 ></button>
 		</div>
 		<hr>
 	</div>
@@ -145,7 +152,7 @@
 	<!-- 최근기록 상세구간 -->
 	<div class="row">
 		<div class="col-2 text-center">
-			<img src="https://via.placeholder.com/50" class="rounded-circle">
+			<img src="./resources/images/fuelcharger.webp" class="rounded-circle" style="width:60px;">
 		</div>
 		<div class="col-7 text-start">
 			<pre>주유 17.66L</pre>
@@ -159,7 +166,7 @@
 	
 	<div class="row">
 		<div class="col-2 text-center">
-			<img src="https://via.placeholder.com/50" class="rounded-circle">
+			<img src="./resources/images/fuelcharger.webp" class="rounded-circle" style="width:60px;">
 		</div>
 		<div class="col-7 text-start">
 			<pre>주유 17.66L</pre>
@@ -178,56 +185,147 @@
 			<h2>정비 목록</h2>
 		</div>
 		<div class="col-8 text-end px-5">
-			<button  type="button" class="btn btn-secondary">전체보기 ></button>
 		</div>
 		<hr>
 	</div>
 	
 	<div class="row d-flex align-items-center">
-		<div class="col-2 text-center">
-			<img src="https://via.placeholder.com/50" class="rounded-circle">
-		</div>
-		<div class="col-7">
-			<pre>엔진오일 교체</pre>
-			<div class="progress m-0 p-0" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-				<div class="progress-bar w-75"></div>
-			</div>
-			<pre>1800 km 남음</pre>
-		</div>
-		<div class="col-3 text-end px-5">
-			<button  type="button" class="btn btn-secondary">보기</button>
-		</div>
-	</div>
+            <div class="col-2 text-center">
+                <img src="./resources/images/engineOil.webp" class="rounded-circle" style="width:60px;">
+            </div>
+            <div class="col-7">
+                <pre>엔진오일 교체</pre>
+                <c:set var="cenginOil" value="${sessionScope.info.cenginOil}" />
+                <c:set var="carMileage" value="${sessionScope.info.carMileage}" />
+                <c:set var="oilPlus7000" value="${cenginOil + 7000}" />
+                <c:set var="oilRemainingKm" value="${oilPlus7000 - carMileage}" />
+                <c:choose>
+                    <c:when test="${oilRemainingKm >= 0}">
+                        <c:set var="progressPercent" value="${((7000 - oilRemainingKm) / 7000.0) * 100}" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="progressPercent" value="100" />
+                    </c:otherwise>
+                </c:choose>
+                
+                <div class="progress m-0 p-0" role="progressbar" aria-label="Basic example" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100">
+                    <c:choose>
+                        <c:when test="${oilRemainingKm >= 0}">
+                            <div class="progress-bar" style="width: ${progressPercent}%;"></div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="progress-bar bg-danger" style="width: 100%;"></div>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                
+                <c:choose>
+                    <c:when test="${oilRemainingKm >= 0}">
+                        <span>${oilRemainingKm} km 남음</span>
+                    </c:when>
+                    <c:otherwise>
+                        <span>${-oilRemainingKm} km 초과</span>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            <div class="col-3 text-end px-5">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#enginOilModalLabel" data-bs-whatever="@getbootstrap">업데이트</button>
+            </div>
+        </div>
+
+
+
+
 		<div class="row d-flex align-items-center">
-		<div class="col-2 text-center">
-			<img src="https://via.placeholder.com/50" class="rounded-circle">
-		</div>
-		<div class="col-7">
-			<pre>에어컨 필터 교체</pre>
-			<div class="progress m-0 p-0" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-				<div class="progress-bar w-75"></div>
-			</div>
-			<pre>1개월 16일 남음</pre>
-		</div>
-		<div class="col-3 text-end px-5">
-			<button  type="button" class="btn btn-secondary">보기</button>
-		</div>
-	</div>
-		<div class="row d-flex align-items-center">
-		<div class="col-2 text-center">
-			<img src="https://via.placeholder.com/50" class="rounded-circle">
-		</div>
-		<div class="col-7">
-			<pre>타이어 교체</pre>
-			<div class="progress" role="progressbar" aria-label="Danger example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-				<div class="progress-bar bg-danger" style="width: 100%"></div>
-			</div>
-			<pre>2개월 9일 지남</pre>
-		</div>
-		<div class="col-3 text-end px-5">
-			<button  type="button" class="btn btn-secondary">보기</button>
-		</div>
-	</div>
+            <div class="col-2 text-center">
+                <img src="./resources/images/airFilter.webp" class="rounded-circle"style="width:60px;">
+            </div>
+            <div class="col-7">
+                <pre>에어컨 필터 교체</pre>
+                <c:set var="cairFilter" value="${sessionScope.info.cairFilter}" />
+                <c:set var="carMileage" value="${sessionScope.info.carMileage}" />
+                <c:set var="filterPlus7000" value="${cairFilter + 7000}" />
+                <c:set var="remainingKm" value="${filterPlus7000 - carMileage}" />
+                <c:choose>
+                    <c:when test="${remainingKm >= 0}">
+                        <c:set var="progressPercent" value="${((7000 - remainingKm) / 7000.0) * 100}" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="progressPercent" value="100" />
+                    </c:otherwise>
+                </c:choose>
+                
+                <div class="progress m-0 p-0" role="progressbar" aria-label="Basic example" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100">
+                    <c:choose>
+                        <c:when test="${remainingKm >= 0}">
+                            <div class="progress-bar" style="width: ${progressPercent}%;"></div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="progress-bar bg-danger" style="width: 100%;"></div>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                
+                <c:choose>
+                    <c:when test="${remainingKm >= 0}">
+                        <span>${remainingKm} km 남음</span>
+                    </c:when>
+                    <c:otherwise>
+                        <span>${-remainingKm} km 초과</span>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            <div class="col-3 text-end px-5">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#airFilterModalLabel" data-bs-whatever="@getbootstrap">업데이트</button>
+            </div>
+        </div>
+        
+        
+
+
+		<div class="row d-flex align-items-center mb-3">
+            <div class="col-2 text-center">
+                <img src="./resources/images/tire.webp" class="rounded-circle" style="width:60px;">
+            </div>
+            <div class="col-7">
+                <pre>타이어 교체</pre>
+                <c:set var="cTire" value="${sessionScope.info.cTire}" />
+                <c:set var="carMileage" value="${sessionScope.info.carMileage}" />
+                <c:set var="tirePlus7000" value="${cTire + 7000}" />
+                <c:set var="tireRemainingKm" value="${tirePlus7000 - carMileage}" />
+                <c:choose>
+                    <c:when test="${tireRemainingKm >= 0}">
+                        <c:set var="progressPercent" value="${((7000 - tireRemainingKm) / 7000.0) * 100}" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="progressPercent" value="100" />
+                    </c:otherwise>
+                </c:choose>
+                
+                <div class="progress" role="progressbar" aria-label="Danger example" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100">
+                    <c:choose>
+                        <c:when test="${tireRemainingKm >= 0}">
+                            <div class="progress-bar" style="width: ${progressPercent}%;"></div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="progress-bar bg-danger" style="width: 100%;"></div>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                
+                <c:choose>
+                    <c:when test="${tireRemainingKm >= 0}">
+                        <span>${tireRemainingKm} km 남음</span>
+                    </c:when>
+                    <c:otherwise>
+                        <span>${-tireRemainingKm} km 초과</span>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            <div class="col-3 text-end px-5">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tireModalLabel" data-bs-whatever="@getbootstrap">업데이트</button>
+            </div>
+        </div>
 
 <!-- 차량정보 추가 모달창 -->
 
@@ -355,7 +453,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="cmileageForm" action="cmileageUpdateProcess" method="post">
+        <form id="cmileageForm">
         <input type="hidden" id="sessionId" value="${ id }">
           <div class="mb-3">
             <label for="editCmileage" class="col-form-label">누적 주행거리 :</label>
@@ -371,6 +469,127 @@
     </div>
   </div>
 </div>
+
+<!-- 엔진오일 교채 업데이트 모달창 -->
+
+<div class="modal fade" id="enginOilModalLabel" tabindex="-1" aria-labelledby="enginOilModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">엔진오일 교체</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="enginOilForm">
+        <input type="hidden" id="sessionId" value="${ id }">
+        <input type="hidden" id="carMileage" value="${sessionScope.info.carMileage}">        
+          <div class="mb-3">
+            <label for="editEngineOil" class="col-form-label">교체 주행거리 :</label>
+            <input type="text" class="form-control" id="editEngineOil" name="editEngineOil">
+            <small id="editEngineOilHelp" class="form-text"> 숫자만 입력해주세요.</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="submit" class="btn btn-primary carInfoUpdate" form="enginOilForm">업데이트</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 에어컨 필터 교채 업데이트 모달창 -->
+
+<div class="modal fade" id="airFilterModalLabel" tabindex="-1" aria-labelledby="airFilterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">에어컨 필터 교체</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="airFilterForm">
+        <input type="hidden" id="sessionId" value="${ id }">
+        <input type="hidden" id="carMileage" value="${sessionScope.info.carMileage}">        
+          <div class="mb-3">
+            <label for="editairFilter" class="col-form-label">교체 주행거리 :</label>
+            <input type="text" class="form-control" id="editairFilter" name="editairFilter">
+            <small id="editairFilterHelp" class="form-text"> 숫자만 입력해주세요.</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="submit" class="btn btn-primary carInfoUpdate" form="airFilterForm">업데이트</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 타이어 교채 업데이트 모달창 -->
+
+
+
+<div class="modal fade" id="tireModalLabel" tabindex="-1" aria-labelledby="tireModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="tireModalLabel">타이어 교체</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="tireForm">
+        <input type="hidden" id="sessionId" value="${ id }">
+        <input type="hidden" id="carMileage" value="${sessionScope.info.carMileage}">        
+          <div class="mb-3">
+            <label for="editcTire" class="col-form-label">교체 주행거리 :</label>
+            <input type="text" class="form-control" id="editcTire" name="editcTire">
+            <small id="editcTireHelp" class="form-text"> 숫자만 입력해주세요.</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="submit" class="btn btn-primary carInfoUpdate" form="tireForm">업데이트</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 내차정보 모달 -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><strong>"${sessionScope.info.id}"</strong> 님의 차량정보</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>차량 별명:</strong> ${sessionScope.info.carNickname}</p>
+                    <p><strong>차량 종류:</strong> ${sessionScope.info.cname}</p>
+                    <p><strong>차량 번호:</strong> ${sessionScope.info.cnumber}</p>
+                    <p><strong>제조사:</strong> ${sessionScope.info.cmanufacturer}</p>
+                    <p><strong>제조 연도:</strong> ${sessionScope.info.cyear} 년식</p>
+                    <p><strong>차량 색상:</strong> ${sessionScope.info.ccolor}</p>
+                    <p><strong>연료 타입:</strong> ${sessionScope.info.cfuelType}</p>
+                    <p><strong>변속기:</strong> ${sessionScope.info.ctransmission}</p>
+                    <p><strong>마지막 엔진 오일 교체:</strong> ${sessionScope.info.cenginOil} km</p>
+                    <p><strong>마지막 에어컨 필터 교체:</strong> ${sessionScope.info.cairFilter} km</p>
+                    <p><strong>마지막 타이어 교체:</strong> ${sessionScope.info.cTire} km</p>
+                    <p><strong>현재 주행 거리:</strong> ${sessionScope.info.carMileage} km</p>
+                    <p><strong>평균 연비:</strong> ${sessionScope.info.carFuelAverage} km/l</p>
+                    <p><strong>등록 날짜:</strong> <fmt:formatDate value="${sessionScope.info.createdAt}" pattern="yyyy년 MM월 dd일"/></p>
+                    <div class="text-center">
+                        <p><strong>차량 이미지:</strong></p>
+                        <img src="./resources/upload/${sessionScope.info.carImg}" alt="Car Image" class="img-fluid" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </body>

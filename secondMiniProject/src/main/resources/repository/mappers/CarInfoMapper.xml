@@ -22,6 +22,24 @@
 -->
 <mapper namespace="com.second.miniproject.mapper.CarInfoMapper">
 
+	<update id="tireUpdate">
+		UPDATE car_info
+		SET carMileage = #{ cTire }, cTire = #{ cTire }
+		WHERE id = #{id};
+	</update>
+
+	<update id="airFilterUpdate">
+		UPDATE car_info
+		SET carMileage = #{ cairFilter }, cairFilter = #{ cairFilter }
+		WHERE id = #{id};
+	</update>
+
+	<update id="enginOilUpdate">
+		UPDATE car_info
+		SET carMileage = #{ cenginOil }, cenginOil = #{ cenginOil }
+		WHERE id = #{id};
+	</update>
+
 	<update id="updateCmileage">
 		UPDATE car_info 
 		SET carMileage = #{editCmileage} 

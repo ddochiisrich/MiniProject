@@ -66,14 +66,4 @@ public class CarInfoController {
         return "redirect:main";  // 리다이렉트를 통해 갱신된 정보가 반영되도록 함
     }
     
-    @RequestMapping("/cmileageUpdateProcess")
-    public String updateCarMileage(String id, String editCmileage, HttpSession session) {
-    	
-    	String memberId = (String) session.getAttribute("id");
-    	
-        carInfoService.updateCarMileage(memberId, editCmileage);
-        
-        return "BricksMain";
-        
-    }
 }

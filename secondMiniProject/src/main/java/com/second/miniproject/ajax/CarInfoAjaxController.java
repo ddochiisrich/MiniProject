@@ -33,5 +33,56 @@ public class CarInfoAjaxController {
             
 	    }
 	  
+	  @RequestMapping("/enginOilUpdateProcess.ajax")
+	  @ResponseBody
+	    public CarInfo enginOilUpdate(String id, String editEngineOil, HttpSession session) {
+	    	
+	    	String memberId = (String) session.getAttribute("id");
+
+	        carInfoService.enginOilUpdate(memberId, editEngineOil);
+	        
+	        CarInfo updatedCarInfo = carInfoService.carInfo(id);
+	        
+	        // 세션 갱신
+	        session.setAttribute("info", updatedCarInfo);
+	        
+            return carInfoService.carInfo(id);
+            
+	    }
+	  
+	  @RequestMapping("/airFilterUpdateProcess.ajax")
+	  @ResponseBody
+	    public CarInfo airFilterUpdate(String id, String editairFilter, HttpSession session) {
+	    	
+	    	String memberId = (String) session.getAttribute("id");
+
+	        carInfoService.airFilterUpdate(memberId, editairFilter);
+	        
+	        CarInfo updatedCarInfo = carInfoService.carInfo(id);
+	        
+	        // 세션 갱신
+	        session.setAttribute("info", updatedCarInfo);
+	        
+            return carInfoService.carInfo(id);
+            
+	    }
+	  
+	  @RequestMapping("/tireUpdateProcess.ajax")
+	  @ResponseBody
+	  public CarInfo tireUpdate(String id, String editcTire, String cmileage, HttpSession session) {
+	      String memberId = (String) session.getAttribute("id");
+
+	      carInfoService.tireUpdate(memberId, editcTire);
+
+	      CarInfo updatedCarInfo = carInfoService.carInfo(id);
+
+	      // 세션 갱신
+	      session.setAttribute("info", updatedCarInfo);
+	      session.setAttribute("ctire", editcTire); // ctire 값을 세션에 저장
+	      session.setAttribute("cmileage", cmileage); // cmileage 값을 세션에 저장
+
+	      return carInfoService.carInfo(id);
+	  }
+	  
 	
 }

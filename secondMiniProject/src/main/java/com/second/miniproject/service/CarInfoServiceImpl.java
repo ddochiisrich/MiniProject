@@ -37,4 +37,25 @@ public class CarInfoServiceImpl implements CarInfoService {
 		
 	}
 
+	@Override
+	public void enginOilUpdate(String id, String editEngineOil) {
+		
+		carInfoDao.enginOilUpdate(id, editEngineOil);
+		
+	}
+
+	@Override
+	public void airFilterUpdate(String id, String editairFilter) {
+		
+		carInfoDao.cairFilterUpdate(id, editairFilter);
+		
+	}
+
+	@Override
+	public void tireUpdate(String id, String editcTire) {
+		
+		carInfoDao.cTireUpdate(id, editcTire);
+		
+	}
+
 }

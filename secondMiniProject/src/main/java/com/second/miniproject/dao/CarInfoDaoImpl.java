@@ -45,4 +45,37 @@ public class CarInfoDaoImpl implements CarInfoDao {
 		
 	}
 
+	@Override
+	public void enginOilUpdate(String id, String editEngineOil) {
+		
+		Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        params.put("cenginOil", editEngineOil);
+        		
+		sqlSession.update(NAME_SPACE + ".enginOilUpdate", params);
+		
+	}
+
+	@Override
+	public void cairFilterUpdate(String id, String editairFilter) {
+		
+		Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        params.put("cairFilter", editairFilter);
+        		
+		sqlSession.update(NAME_SPACE + ".airFilterUpdate", params);
+		
+	}
+
+	@Override
+	public void cTireUpdate(String id, String editcTire) {
+
+		Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        params.put("cTire", editcTire);
+        		
+		sqlSession.update(NAME_SPACE + ".tireUpdate", params);
+		
+	}
+
 }

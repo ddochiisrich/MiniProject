@@ -12,5 +12,11 @@ public interface CarInfoDao {
 	
 	public abstract void updateCarMileage(String id, String editCmileage);
 	
+	public abstract void enginOilUpdate(String id, String cenginOil);
+	
+	public abstract void cairFilterUpdate(String id, String cairFilter);
+	
+	public abstract void cTireUpdate(String id, String cengcTireinOil);
+	
 	
 }

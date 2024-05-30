@@ -210,3 +210,18 @@ aside a {
     }
     
     
+    
+     .carousel {
+      width: 1280px;
+      height: 230px;
+      overflow: hidden;
+    }
+    .carousel-inner {
+      width: 100%;
+      height: 100%;
+    }
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }   
