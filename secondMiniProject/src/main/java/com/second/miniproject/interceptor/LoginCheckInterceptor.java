@@ -3,14 +3,16 @@ package com.second.miniproject.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-public class LoginCheckInterceptor {
+public class LoginCheckInterceptor implements HandlerInterceptor{ // HandlerInterceptor 통한 로그인 유무 확인
 
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
 		// 우리 컨트롤러가 호출되기 전에 실행
 		// 조건에 맞아 true 가 되면 다음으로 연결. false 라면 다음으로 연결이 않됨
 		if (req.getSession().getAttribute("isLogin") == null) {
+			resp.sendRedirect("loginForm");
 			return false;
 		}
 		return true;
@@ -26,5 +28,12 @@ public class LoginCheckInterceptor {
 			throws Exception {
 		// 우리 컨트롤러가 실행되고 dispatcher 로 넘어갈 때 실행
 		System.out.println("postHandle : " + modelAndView.getViewName());
+	}
+
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 }

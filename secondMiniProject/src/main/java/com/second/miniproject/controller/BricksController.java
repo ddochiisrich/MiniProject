@@ -2,6 +2,7 @@ package com.second.miniproject.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.second.miniproject.domain.Board;
+import com.second.miniproject.domain.Community;
 import com.second.miniproject.service.BoardService;
 
 @Controller
@@ -67,7 +70,51 @@ public class BricksController {
 		// 여기서 바로전에 insert한 board no 알아야 한다면 ?
 		System.out.println("board no : " + board.getNo());
 		
-		return "redirect:BricksMain";
+		return "redirect:main";
 	}
+	
+	// community --------------------------
+		@RequestMapping("/Community")
+		public String boardCommunity(Model model,
+				@RequestParam(value="pageNum", defaultValue="1") int pageNum,
+				@RequestParam(value="type", defaultValue="null") String type,
+				@RequestParam(value="keyword", defaultValue="null") String keyword) {
+			
+			Map<String, Object> modelMap = boardService.boardList(pageNum, type, keyword);
+			model.addAllAttributes(modelMap);
+			
+			return "communityForm";
+		}
+		
+		@PostMapping("/communitywrite")
+		public String insertBoard(HttpServletRequest req,
+				String content, String title,
+				@RequestParam(value="file5") MultipartFile multipartFile) throws IOException {
+			
+			Community commu = new Community();
+			commu.setTitle(title);
+			commu.setContent(content);
+		
+			if(!multipartFile.isEmpty()) { // 파일이 업로드 되었으면
+				String realPath = req.getServletContext().getRealPath(DEFAULT_PATH);
+				
+				UUID uid = UUID.randomUUID();
+				String saveName = uid.toString() + "_" + multipartFile.getOriginalFilename();
+				File file = new File(realPath, saveName);
+				System.out.println("insertBoard - newName : " + file.getName());
+				
+				multipartFile.transferTo(file);
+				commu.setFile5(saveName);
+				
+			}
+			
+			boardService.insetCommunity(commu);
+			
+			// 여기서 바로전에 insert한 board no 알아야 한다면 ?
+			System.out.println("board no : " + commu.getNo());
+			
+			return "redirect:Community";
+		}
+	// community -------------------------- end
 	
 }

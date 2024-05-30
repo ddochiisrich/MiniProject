@@ -43,7 +43,9 @@
 					</div>
 					<div class="offcanvas-body">CONTENT</div>
 					<div class="offcanvas-body">
-							<a href="writeForm">WRITING</a>
+							<a href="writeForm" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">WRITING</a>
+							<br>
+							<a href="Community" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">community</a>
 					</div>
 				</div>
 			</div>

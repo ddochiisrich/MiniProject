@@ -27,5 +27,18 @@
 	<view-controller path="/joinForm" view-name="member/memberJoinForm"/>
 	<view-controller path="loginForm" view-name="loginForm"/>
 	<view-controller path="/writeForm" view-name="writeForm"/>
+	<view-controller path="/writeForm2" view-name="writeForm2"/>
+	
+	<beans:bean id="loginCheckInterceptor" class="com.second.miniproject.interceptor.LoginCheckInterceptor"/>
+	
+	<interceptors>
+	<!-- 차단하는 저지하는 -->
+		<interceptor>
+			<mapping path="/Community" />
+			<mapping path="/add*" />
+			<mapping path="/write*" />
+			<beans:ref bean="loginCheckInterceptor" />	
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, inittial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bricks</title>
 <link href="resources/bootstrap/bootstrap.min.css" rel="stylesheet">
 <script src="resources/js/jquery-3.7.1.min.js"></script>
-<script src="resources/js/trade.js"></script>
-<script src="resources/js/tradeformcheck.js"></script>
-<link rel="stylesheet" href="resources/css/style.css">
+<script src="resources/js/reply.js"></script>
+<script src="resources/js/member.js"></script>
 
 </head>
 <body>
