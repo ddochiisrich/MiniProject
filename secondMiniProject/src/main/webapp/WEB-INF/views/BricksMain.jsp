@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+  
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,111 @@
 	body {
     background-color: white;
 }
+
+.btne {
+  border: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  background-color: #222;
+  padding: 17px 60px;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+}
+
+.btne span {
+  position: relative; 
+  z-index: 1;
+}
+
+.btne:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 140%;
+  background: #78c7d2;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btne:hover:after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+
+/*메인 업데이트버튼 css*/
+
+.btneff {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 600;
+    color: #382b22; /* text 변수 값 */
+    text-transform: uppercase;
+    padding: 0.5em 1em;
+    background: #f5f5dc; /* light-beige */
+    border: 2px solid #d3b48d; /* beige-border */
+    border-radius: 0.75em;
+    transform-style: preserve-3d;
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.btneff::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #e3d3b5; /* dark-beige */
+    border-radius: inherit;
+    box-shadow: 0 0 0 2px #d3b48d, 0 0.625em 0 0 #f7e8d4; /* beige-border, beige-shadow */
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.btneff:hover {
+    background: #eee8aa; /* medium-beige */
+    transform: translate(0, 0.25em);
+}
+
+.btneff:hover::before {
+    box-shadow: 0 0 0 2px #d3b48d, 0 0.5em 0 0 #f7e8d4; /* beige-border, beige-shadow */
+    transform: translate3d(0, 0.5em, -1em);
+}
+
+.btneff:active {
+    background: #eee8aa; /* medium-beige */
+    transform: translate(0em, 0.75em);
+}
+
+.btneff:active::before {
+    box-shadow: 0 0 0 2px #d3b48d, 0 0 #f7e8d4; /* beige-border, beige-shadow */
+    transform: translate3d(0, 0, -1em);
+}
+
 </style>
+<link href="https://fonts.googleapis.com/css?family=Rubik:700&display=swap" rel="stylesheet">
 
 <meta charset="UTF-8">
 <title>Bricks</title>
@@ -30,7 +135,7 @@
 			<span class="fs-3">|</span>
 		</div>
 		<div class="col-1 my-5 align-items-center text-center">
-			<a href="#" class="fs-3 link-dark link-underline-opacity-0"><span>기록</span></a>
+			<a href="#recentRecords" class="fs-3 link-dark link-underline-opacity-0"><span>기록</span></a>
 		</div>
 		<div class="col-1 my-5 align-items-center text-center">
 			<a href="#" class="fs-3 link-dark link-underline-opacity-0"><span>통계</span></a>
@@ -39,7 +144,7 @@
 			<a href="#" class="fs-3 link-dark link-underline-opacity-0"><span>점검</span></a>
 		</div>
 		<div class="col-1 my-5 align-items-center text-center">
-			<a href="#" class="fs-3 link-dark link-underline-opacity-0"><span>정비</span></a>
+			<a href="#maintenance" class="fs-3 link-dark link-underline-opacity-0"><span>정비</span></a>
 		</div>
 		<div class="col-3">
 		
@@ -51,11 +156,11 @@
 	
 	<!-- 로그인을 안한상태 -->
 	<c:if test="${sessionScope.carInfoCheck == null}">
-		<div class="border rounded border-dark mt-5 d-flex align-items-center justify-content-center" style="width:1360px; height:370px; padding:0px 12px;" >
+		<div class="mt-1 d-flex align-items-center justify-content-center" style="height:370px; padding:0px 12px;" >
 			<div class="row">
 				<div class="col">
 					<div class="d-grid gap-2">
-						<h1>로그인 또는 회원가입을 해주세요</h1>
+						<a href="joinForm"><img src="./resources/images/notlogin.png" style="height:370px;"></a>
 					</div>
 				</div>	
 			</div>
@@ -65,11 +170,11 @@
 	<!-- 로그인을 했으나 자기 차량등록을 안한상태 -->
 	<div class="loginNotadd">
 	<c:if test="${sessionScope.carInfoCheck == false}">
-		<div class="border rounded border-dark mt-5 d-flex align-items-center justify-content-center" style="width:1360px; height:370px; padding:0px 12px;" >
+<div class="mt-1 d-flex align-items-center justify-content-center" style="height: 370px; padding: 0px 12px; background-image: url('./resources/images/addmycar.png'); background-size: cover;">
 			<div class="row">
 				<div class="col">
-					<div class="d-grid gap-2">
-						<button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button">차량등록하기</button>
+					<div class="d-grid gap-2 button_container" >
+						<button class="btn btn-success btn-lg btne" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button"><span>차량등록하기</span></button>
 					</div>
 				</div>	
 			</div>
@@ -79,7 +184,7 @@
 	<!-- 로그인을 한 후 자기차량이 등록되있는 상태 -->
 	<div class="loginOkadd">
 	<c:if test="${sessionScope.carInfoCheck == true}">
-		<div class="border rounded border-dark mt-5" style="padding:0px 12px; background-image: url('./resources/upload/${sessionScope.info.carImg}');  background-repeat: no-repeat; background-position: center; background-size: cover;" >
+		<div class="border rounded border-dark mt-1" style="padding:0px 12px; background-image: url('./resources/upload/${sessionScope.info.carImg}');  background-repeat: no-repeat; background-position: center; background-size: cover;" >
 			<div class="row mb-1 pt-5 px-5">
 				<div class="col text-light">
 					<div class="row">
@@ -100,13 +205,14 @@
 				</div>		
 			</div>
 			<div class="row rounded-bottom align-items-center p-3" style="background-color: rgba(0, 0, 0, 0.5);">
-				<div class="col-6 text-light py-4">
+				<div class="col-6 text-light ps-5">
 					<button type="button" class="btn text-white" data-bs-toggle="modal" data-bs-target="#cmileageModal" data-bs-whatever="@getbootstrap">누적 주행거리 ></button><br>
 					<div id="mileageDiv">
-						<span class="fs-1" id="resultCmileage">${sessionScope.info.carMileage}</span><span>km</span>
+						<span class="fs-1 ms-2" id="resultCmileage"><fmt:formatNumber value="${sessionScope.info.carMileage}" type="number" maxFractionDigits="0" groupingUsed="true" /></span><span>km</span>
+						
 					</div>
 				</div>		
-				<div class="col-6 text-light py-4">
+				<div class="col-6 text-light ps-5">
 					<span>평균 연비 ></span><br>
 					<span class="fs-1">${sessionScope.info.carFuelAverage}</span><span>km/L</span>
 				</div>
@@ -116,7 +222,7 @@
 	</div>
 
 		<!-- 광고 캐러셀 --> 
-	<div id="carouselExampleAutoplaying" class="carousel slide mt-3" data-bs-ride="carousel">
+	<div id="carouselExampleAutoplaying" class="carousel slide mt-5 justify-content-center" data-bs-ride="carousel">
 	  <div class="carousel-inner">
 	    <div class="carousel-item active">
 	      <img src="./resources/images/carousel01.webp" class="d-block w-100">
@@ -139,7 +245,7 @@
 	</div>
 	
 	<!-- 최근기록 구간 -->
-	<div class="row mt-5">
+	<div class="row mt-5" id="recentRecords">
 		<div class="col-4 text-start">
 			<h2>최근 기록</h2>
 		</div>
@@ -150,26 +256,26 @@
 	
 	
 	<!-- 최근기록 상세구간 -->
-	<div class="row">
+	<div class="row mt-4">
 		<div class="col-2 text-center">
 			<img src="./resources/images/fuelcharger.webp" class="rounded-circle" style="width:60px;">
 		</div>
 		<div class="col-7 text-start">
-			<pre>주유 17.66L</pre>
+			<strong><pre class="fs-5 m-0 p-0">주유 31.81L</pre></strong>
 			<pre>(주) 지에스이엔알 보라주유소</pre>
 		</div>
 		<div class="col-3 text-end px-5">
-			<pre>1,699 ₩/L</pre>
+			<pre>1,728 ₩/L</pre>
 			<h5>₩ 30,000</h5>
 		</div>
 	</div>
 	
-	<div class="row">
+	<div class="row mt-4">
 		<div class="col-2 text-center">
 			<img src="./resources/images/fuelcharger.webp" class="rounded-circle" style="width:60px;">
 		</div>
 		<div class="col-7 text-start">
-			<pre>주유 17.66L</pre>
+			<strong><pre class="fs-5 m-0 p-0">주유 17.66L</pre></strong>
 			<pre>(주) 지에스이엔알 보라주유소</pre>
 		</div>
 		<div class="col-3 text-end px-5">
@@ -180,7 +286,7 @@
 	
 
 	<!-- 정비목록 구간 -->
-	<div class="row mt-5">
+	<div class="row mt-5" id="maintenance">
 		<div class="col-4 text-start">
 			<h2>정비 목록</h2>
 		</div>
@@ -194,7 +300,7 @@
                 <img src="./resources/images/engineOil.webp" class="rounded-circle" style="width:60px;">
             </div>
             <div class="col-7">
-                <pre>엔진오일 교체</pre>
+                <strong><pre class="fs-5 m-0 p-0">엔진오일 교체</pre></strong>
                 <c:set var="cenginOil" value="${sessionScope.info.cenginOil}" />
                 <c:set var="carMileage" value="${sessionScope.info.carMileage}" />
                 <c:set var="oilPlus7000" value="${cenginOil + 7000}" />
@@ -228,20 +334,23 @@
                     </c:otherwise>
                 </c:choose>
             </div>
-            <div class="col-3 text-end px-5">
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#enginOilModalLabel" data-bs-whatever="@getbootstrap">업데이트</button>
+            <div class="col-2 text-end px-5">
+                <button type="button" class="btn btn-secondary btneff" data-bs-toggle="modal" data-bs-target="#enginOilModalLabel" data-bs-whatever="@getbootstrap">업데이트</button>
+            </div>
+             <div class="col-1">
+          
             </div>
         </div>
 
 
 
 
-		<div class="row d-flex align-items-center">
+		<div class="row d-flex align-items-center my-5">
             <div class="col-2 text-center">
                 <img src="./resources/images/airFilter.webp" class="rounded-circle"style="width:60px;">
             </div>
             <div class="col-7">
-                <pre>에어컨 필터 교체</pre>
+                <strong><pre class="fs-5 m-0 p-0">에어컨 필터 교체</pre></strong>
                 <c:set var="cairFilter" value="${sessionScope.info.cairFilter}" />
                 <c:set var="carMileage" value="${sessionScope.info.carMileage}" />
                 <c:set var="filterPlus7000" value="${cairFilter + 7000}" />
@@ -268,15 +377,18 @@
                 
                 <c:choose>
                     <c:when test="${remainingKm >= 0}">
-                        <span>${remainingKm} km 남음</span>
+                        <span >${remainingKm} km 남음</span>
                     </c:when>
                     <c:otherwise>
                         <span>${-remainingKm} km 초과</span>
                     </c:otherwise>
                 </c:choose>
             </div>
-            <div class="col-3 text-end px-5">
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#airFilterModalLabel" data-bs-whatever="@getbootstrap">업데이트</button>
+            <div class="col-2 text-end px-5">
+                <button type="button" class="btn btn-secondary btneff" data-bs-toggle="modal" data-bs-target="#airFilterModalLabel" data-bs-whatever="@getbootstrap">업데이트</button>
+            </div>
+            <div class="col-1">
+            
             </div>
         </div>
         
@@ -288,7 +400,7 @@
                 <img src="./resources/images/tire.webp" class="rounded-circle" style="width:60px;">
             </div>
             <div class="col-7">
-                <pre>타이어 교체</pre>
+                <strong><pre class="fs-5 m-0 p-0">타이어 교체</pre></strong>
                 <c:set var="cTire" value="${sessionScope.info.cTire}" />
                 <c:set var="carMileage" value="${sessionScope.info.carMileage}" />
                 <c:set var="tirePlus7000" value="${cTire + 7000}" />
@@ -322,8 +434,11 @@
                     </c:otherwise>
                 </c:choose>
             </div>
-            <div class="col-3 text-end px-5">
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tireModalLabel" data-bs-whatever="@getbootstrap">업데이트</button>
+            <div class="col-2 text-end px-5">
+                <button type="button" class="btn btn-secondary btneff" data-bs-toggle="modal" data-bs-target="#tireModalLabel" data-bs-whatever="@getbootstrap">업데이트</button>
+            </div>
+             <div class="col-1">
+            
             </div>
         </div>
 

@@ -34,8 +34,8 @@ body {
 .btn_gotop {
 	display: none;
 	position: fixed;
-	bottom: 30px;
-	right: 30px;
+	bottom: 70px;
+	right: 70px;
 	z-index: 999;
 /* 	border: 1px solid #ccc; */
 	outline: none;
@@ -54,7 +54,7 @@ body {
 
 
 </head>
-<body>
+<body class="page">
 	<div class="container">
 		<%@ include file="template/header.jsp"%>
 		<jsp:include page="${param.body}" />
@@ -65,7 +65,7 @@ body {
 		class="glyphicon glyphicon-chevron-up"> </span>
 	</a> -->
 
-	<div style="position: fixed; bottom: 35px; right: 30px; z-index: 99;">
+	<div style="position: fixed; bottom: 70px; right: 60px; z-index: 99;">
 		<a href="#doz_header"> <img src="./resources/images/2240180.png"
 			style="width: 100px; transform: scaleY(-1);" class="btn_gotop">
 		</a>
@@ -88,5 +88,25 @@ body {
 			return false;
 		});
 	</script>
+
+
+	<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const links = document.querySelectorAll('.link');
+
+      links.forEach(link => {
+        link.addEventListener('click', function(event) {
+          event.preventDefault(); // 링크 기본 동작을 막음
+          const href = this.getAttribute('href');
+
+          document.body.classList.add('fade-out');
+
+          setTimeout(function() {
+            window.location.href = href;
+          }, 2000); // 2초 후에 페이지 전환
+        });
+      });
+    });
+  </script>
 </body>
 </html>

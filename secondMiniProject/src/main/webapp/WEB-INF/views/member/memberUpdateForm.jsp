@@ -17,7 +17,7 @@
 		</div>
 		<div class="row my-3 text-center">
 			<div class="col">
-				<h2 class="fs-3 fw-bold">SIGN UP</h2>
+				<h2 class="fs-3 fw-bold">MEMBER UPDATE</h2>
 			</div>
 		</div>
 		<hr class="border border-black border-2 opacit-50">
