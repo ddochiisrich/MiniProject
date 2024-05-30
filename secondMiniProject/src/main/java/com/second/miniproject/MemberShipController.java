@@ -122,6 +122,7 @@ public class MemberShipController {
 		
 		session.setAttribute("id", id);
 		
+		
 		int result = memberService.login(id, pass);
 		if (result == -1) { // id가 존재하지 않는 경우
 			response.setContentType("text/html; charset=UTF-8");
@@ -143,6 +144,8 @@ public class MemberShipController {
 
 			return null;
 		}
+		
+		
 
 		
 		MemberShip member = memberService.getMember(id);
@@ -160,6 +163,12 @@ public class MemberShipController {
 		if (check) {
 	        CarInfo info = carInfoService.carInfo(id);
 	        session.setAttribute("info", info);
+	        
+	     // cmanufacturer 값을 세션에 저장
+	        if (info != null) {
+	            String cmanufacturer = info.getCmanufacturer();
+	            session.setAttribute("cmanufacturer", cmanufacturer);
+	        }
 	        
 
 	        // Calculate the number of days since createdAt

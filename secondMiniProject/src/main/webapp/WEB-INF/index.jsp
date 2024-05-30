@@ -13,6 +13,7 @@
 <script src="resources/js/trade.js"></script>
 <script src="resources/js/member.js"></script>
 <script src="resources/js/tradeformcheck.js"></script>
+<script src="resources/js/carInfo.js"></script>
 <link rel="stylesheet" href="resources/css/style.css">
 
 </head>

@@ -9,4 +9,6 @@ public interface CarInfoService {
 	public abstract CarInfo carInfo(String id);
 	
 	public abstract void insertCarInfo(CarInfo carInfo);
+	
+	public abstract void updateCarMileage(String id, String editCmileage);
 }

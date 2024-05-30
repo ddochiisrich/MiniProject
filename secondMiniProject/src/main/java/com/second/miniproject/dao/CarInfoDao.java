@@ -10,4 +10,7 @@ public interface CarInfoDao {
 	
 	public abstract void insertCarInfo(CarInfo carInfo);
 	
+	public abstract void updateCarMileage(String id, String editCmileage);
+	
+	
 }

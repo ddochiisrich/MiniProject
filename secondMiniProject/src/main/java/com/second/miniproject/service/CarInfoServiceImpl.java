@@ -30,4 +30,11 @@ public class CarInfoServiceImpl implements CarInfoService {
 		carInfoDao.insertCarInfo(carInfo);
 	}
 
+	@Override
+	public void updateCarMileage(String id, String editCmileage) {
+		
+		carInfoDao.updateCarMileage(id, editCmileage);
+		
+	}
+
 }

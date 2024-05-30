@@ -77,6 +77,7 @@
 	</c:if>
 	
 	<!-- 로그인을 했으나 자기 차량등록을 안한상태 -->
+	<div class="loginNotadd">
 	<c:if test="${sessionScope.carInfoCheck == false}">
 		<div class="border rounded border-dark mt-5 d-flex align-items-center justify-content-center" style="width:1360px; height:370px; padding:0px 12px;" >
 			<div class="row">
@@ -88,8 +89,9 @@
 			</div>
 		</div>
 	</c:if>
-	
+	</div>
 	<!-- 로그인을 한 후 자기차량이 등록되있는 상태 -->
+	<div class="loginOkadd">
 	<c:if test="${sessionScope.carInfoCheck == true}">
 		<div class="border rounded border-dark mt-5" style="padding:0px 12px; background-image: url('./resources/upload/${sessionScope.info.carImg}');  background-repeat: no-repeat; background-position: center; background-size: cover;" >
 			<div class="row mb-1 pt-5 px-5">
@@ -102,7 +104,7 @@
 					</div>
 				</div>	
 				<div class="col text-end">
-					<img src="./resources/images/HYUNDAI.svg" class="w-50">
+					<img src="./resources/images/${ sessionScope.cmanufacturer }.svg" class="w-25">
 				</div>	
 			</div>
 	
@@ -113,8 +115,10 @@
 			</div>
 			<div class="row rounded-bottom align-items-center p-3" style="background-color: rgba(0, 0, 0, 0.5);">
 				<div class="col-6 text-light py-4">
-					<span>누적 주행거리 ></span><br>
-					<span class="fs-1">${sessionScope.info.carMileage}</span><span>km</span>
+					<button type="button" class="btn text-white" data-bs-toggle="modal" data-bs-target="#cmileageModal" data-bs-whatever="@getbootstrap">누적 주행거리 ></button><br>
+					<div id="mileageDiv">
+						<span class="fs-1" id="resultCmileage">${sessionScope.info.carMileage}</span><span>km</span>
+					</div>
 				</div>		
 				<div class="col-6 text-light py-4">
 					<span>평균 연비 ></span><br>
@@ -123,6 +127,7 @@
 			</div>
 		</div>
 	</c:if>
+	</div>
 	
 	
 	<!-- 최근기록 구간 -->
@@ -224,7 +229,7 @@
 		</div>
 	</div>
 
-<!-- 모달창 -->
+<!-- 차량정보 추가 모달창 -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -235,6 +240,7 @@
       </div>
       <div class="modal-body">
         <form id="carForm" action="infoRegistProcess" method="post" enctype="multipart/form-data">
+        <input type="hidden" id="sessionId" value="${ id }">
           <div class="mb-3">
             <label for="cname" class="col-form-label">차종:</label>
             <input type="text" class="form-control" id="cname" name="cname" required>
@@ -267,7 +273,7 @@
               <option value="람보르기니">람보르기니</option>
               <option value="기아">기아</option>
               <option value="미쓰비시">미쓰비시</option>
-              <option value="수바루">수바루</option>
+              <option value="스바루">스바루</option>
               <option value="쉐보레">쉐보레</option>
               <option value="볼보">볼보</option>
               <option value="재규어">재규어</option>
@@ -283,7 +289,7 @@
           </div>
           <div class="mb-3">
             <label for="cmileage" class="col-form-label">누적주행거리:</label>
-            <input type="text" class="form-control" id="cmileage" name="cmileage" required>
+            <input type="text" class="form-control" id="carMileage" name="carMileage" required>
           </div>
           <div class="mb-3">
             <label for="ccolor" class="col-form-label">차량 색상:</label>
@@ -339,6 +345,32 @@
   </div>
 </div>
 
+<!-- 차량 주행거리 추가 모달창 -->
+
+<div class="modal fade" id="cmileageModal" tabindex="-1" aria-labelledby="cmileageModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">누적 주행거리 업데이트</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="cmileageForm" action="cmileageUpdateProcess" method="post">
+        <input type="hidden" id="sessionId" value="${ id }">
+          <div class="mb-3">
+            <label for="editCmileage" class="col-form-label">누적 주행거리 :</label>
+            <input type="text" class="form-control" id="editCmileage" name="editCmileage">
+            <small id="editCmileageHelp" class="form-text"> 숫자만 입력해주세요.</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="submit" class="btn btn-primary carInfoUpdate" form="cmileageForm">업데이트</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </body>

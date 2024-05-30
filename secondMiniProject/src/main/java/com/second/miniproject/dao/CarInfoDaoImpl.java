@@ -1,5 +1,8 @@
 package com.second.miniproject.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,6 +33,16 @@ public class CarInfoDaoImpl implements CarInfoDao {
 	public void insertCarInfo(CarInfo carInfo) {
 		
 		sqlSession.insert(NAME_SPACE + ".insertCarInfo", carInfo);
+	}
+
+	@Override
+	public void updateCarMileage(String id, String editCmileage) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        params.put("editCmileage", editCmileage);
+
+        sqlSession.update(NAME_SPACE + ".updateCmileage", params);
+		
 	}
 
 }

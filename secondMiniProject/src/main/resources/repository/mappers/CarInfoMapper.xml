@@ -22,9 +22,15 @@
 -->
 <mapper namespace="com.second.miniproject.mapper.CarInfoMapper">
 
+	<update id="updateCmileage">
+		UPDATE car_info 
+		SET carMileage = #{editCmileage} 
+		WHERE id = #{id};
+	</update>
+
 	<insert id="insertCarInfo" parameterType="carInfo">
 	    INSERT INTO car_info (id, carNickname, cname, cnumber, cmanufacturer, carImg, cyear, carMileage, ccolor, cfuelType, ctransmission, cenginOil, cairFilter, cTire, createdAt)
-	    VALUES (#{id}, #{carNickname}, #{cname}, #{cnumber}, #{cmanufacturer}, #{carImg}, #{cyear}, #{cmileage}, #{ccolor}, #{cfuelType}, #{ctransmission}, #{cenginOil}, #{cairFilter}, #{cTire}, SYSDATE())
+	    VALUES (#{id}, #{carNickname}, #{cname}, #{cnumber}, #{cmanufacturer}, #{carImg}, #{cyear}, #{carMileage}, #{ccolor}, #{cfuelType}, #{ctransmission}, #{cenginOil}, #{cairFilter}, #{cTire}, SYSDATE())
 	</insert>
 	
 
