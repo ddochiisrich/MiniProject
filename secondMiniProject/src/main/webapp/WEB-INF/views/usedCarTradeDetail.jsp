@@ -46,7 +46,7 @@
    	
    	<div class="row justify-content-center">
    		<div class="col-8 justify-content-center align-items-center">
-   			<img src="./resources/images/Tesla_ModelS.jpg" style="width:850px; height:550px" >
+   			<img src="./resources/upload/${ trade.cimg }" style="width:850px; height:550px" >
    		</div>
    		<div class="col-4 border border-secondary-emphasis text-center" >
    			<img src="https://via.placeholder.com/80x80" class="rounded-circle my-5">
@@ -99,7 +99,7 @@
    	</div>
    	<div class="row align-items-center">
    		<div class="col-1 h-auto">
-   			<img src="https://via.placeholder.com/80x80" class="rounded-circle my-2">
+   			<img src="./resources/images/profile4.webp" class="rounded-circle my-2" style="width:80px">
    		</div>
    		<div class="col-11 text-start">
    			<div class="row">

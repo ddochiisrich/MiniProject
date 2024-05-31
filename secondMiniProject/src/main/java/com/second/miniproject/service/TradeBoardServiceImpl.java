@@ -26,7 +26,7 @@ public class TradeBoardServiceImpl implements TradeBoardService {
 		int listCount = 0;
 		boolean searchOption = (type.equals("null") || keyword.equals("null")) ? false : true;
 		listCount = tradeDao.getBoardCount(type, keyword);
-		System.out.println("listCount : " + listCount + ", type : " + type + ", keyword : " + keyword);
+//		System.out.println("listCount : " + listCount + ", type : " + type + ", keyword : " + keyword);
 		List<Trade> tradeBoardList = tradeDao.tradeBoardList(startRow, PAGE_SIZE, type, keyword);
 		int pageCount = listCount / PAGE_SIZE + (listCount % PAGE_SIZE == 0 ? 0 : 1);
 		int startPage = (currentPage / PAGE_GROUP) * PAGE_GROUP + 1 - (currentPage % PAGE_GROUP == 0 ? PAGE_GROUP : 0);

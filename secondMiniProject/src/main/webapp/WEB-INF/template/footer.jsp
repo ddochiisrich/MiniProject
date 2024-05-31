@@ -7,7 +7,7 @@
 		<div class="col-3">
 		<br>
 			<p class="my-0 fw-bold fs-3">BRICKS</p>
-			<p class="my-0">(주) 브릭스&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;공통대표 박효열, 이형철</p><br>
+			<p class="my-0">(주) 브릭스&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;공동대표 박효열, 이형철</p><br>
 			<p class="my-0">사업자등록번호 : 123-12-12345</p>
 			<p>전화번호 : 010-1234-1234</p><br>
 		</div>
