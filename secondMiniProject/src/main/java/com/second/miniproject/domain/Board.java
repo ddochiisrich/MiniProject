@@ -16,24 +16,14 @@ public class Board {
 	private String wiper;
 	private String aircon;
 	private Timestamp regDate;
-<<<<<<< HEAD
-	private int readCount;	
-	
-	public Board() {}
-	
-	public Board(int no, String cname, String notent, String km, String tire, String coolant, String battery,
-			String wiper, String aircon, Timestamp regDate, int readCount) {
-=======
 	private int readCount;
 	private String file2;
 
-	public Board() {
-		
-	}
+	public Board() {}
 
 	public Board(int no, String cname, String cnumber, String km, String tire, String coolant, String battery,
 			String wiper, String aircon, Timestamp regDate, int readCount, String file2) {
->>>>>>> branch 'hyhy' of https://github.com/ddochiisrich/MiniProject.git
+
 		super();
 		this.no = no;
 		this.cname = cname;

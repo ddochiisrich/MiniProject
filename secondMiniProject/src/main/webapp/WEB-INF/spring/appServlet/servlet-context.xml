@@ -11,7 +11,7 @@
 
     <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
-<<<<<<< HEAD
+
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven />
 
@@ -31,6 +31,8 @@
     <!-- View controllers -->
     <mvc:view-controller path="/joinForm" view-name="member/memberJoinForm"/>
     <mvc:view-controller path="/loginForm" view-name="loginForm"/>
+    <mvc:view-controller path="/writeForm" view-name="writeForm"/>
+	<mvc:view-controller path="/writeForm2" view-name="writeForm2"/>
 
     <!-- Interceptors -->
     <bean id="loginCheckInterceptor" class="com.second.miniproject.interceptor.LoginCheckInterceptor" />
@@ -38,36 +40,12 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/registcar" />
+            <mvc:mapping path="/add*" />
+            <mvc:mapping path="/Community" />
+            <mvc:mapping path="/write*" />
             <ref bean="loginCheckInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>
 
 </beans>
-=======
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/index.jsp?body=views/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
-	
-	<context:component-scan base-package="com.second.miniproject" />
-	
-	<view-controller path="/joinForm" view-name="member/memberJoinForm"/>
-	<view-controller path="loginForm" view-name="loginForm"/>
-	<view-controller path="/writeForm" view-name="writeForm"/>
-	<view-controller path="/writeForm2" view-name="writeForm2"/>
-	
-	<beans:bean id="loginCheckInterceptor" class="com.second.miniproject.interceptor.LoginCheckInterceptor"/>
-	
-	<interceptors>
-	<!-- 차단하는 저지하는 -->
-		<interceptor>
-			<mapping path="/Community" />
-			<mapping path="/add*" />
-			<mapping path="/write*" />
-			<beans:ref bean="loginCheckInterceptor" />	
-		</interceptor>
-	</interceptors>
-	
-</beans:beans>
->>>>>>> branch 'hyhy' of https://github.com/ddochiisrich/MiniProject.git
+

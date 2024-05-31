@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.second.miniproject.Board;
+
 import com.second.miniproject.domain.Trade;
 import com.second.miniproject.service.TradeBoardService;
 
