@@ -240,10 +240,10 @@ a:hover, a:focus {
     <div class="row columns">
       <ul class="menu align-center expanded text-center SMN_effect-24" style="list-style-type: none;">
         <li><a href="used_car_board" class="link"><span class="fs-5">중고차 거래 게시판</span></a></li>
-        <li><a href="" class="link"><span class="fs-5">게시판</span></a></li>
-        <li><a href="" class="link"><span class="fs-5">게시판</span></a></li>
-        <li><a href="" class="link"><span class="fs-5">게시판</span></a></li>
-        <li><a href="" class="link"><span class="fs-5">게시판</span></a></li>
+<!--         <li><a href="" class="link"><span class="fs-5">메뉴1</span></a></li>
+        <li><a href="" class="link"><span class="fs-5">메뉴2</span></a></li>
+        <li><a href="" class="link"><span class="fs-5">메뉴3</span></a></li>
+        <li><a href="" class="link"><span class="fs-5">메뉴4</span></a></li> -->
       </ul>
     </div>
   </div>

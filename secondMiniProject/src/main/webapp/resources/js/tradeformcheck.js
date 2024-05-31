@@ -57,7 +57,7 @@ $(document).ready(function(){
                 $.each(tradeList, function(i, v) {
                     let result =
                         '<tr>'
-                        + '<td><img src="./resources/upload/' + v.cimg + ' " style="width:100px;"></td>'
+                        + '<td><img src="./resources/upload/' + v.cimg + ' " style="width:200px; height:100px"></td>'
                         + '<td>'
                         + '  <h5>'
                         + '    <a href="TradeBoardDetail?ucno=' + v.ucno + '&pageNum=' + currentPage + '&type=' + type + '&keyword=' + keyword + '" class="text-decoration-none link-secondary">'+ v.cmanufacturer + ' ' + v.cname + '</a>'
@@ -134,7 +134,7 @@ $(document).ready(function(){
                 $.each(tradeList, function(i, v) {
                     let result =
                         '<tr>'
-                        + '<td><img src="./resources/upload/' + v.cimg + ' " style="width:100px;"></td>'
+                    	+ '<td><img src="./resources/upload/' + v.cimg + ' " style="width:200px; heigth:100px"></td>'
                         + '<td>'
                         + '  <h5>'
                         + '    <a href="TradeBoardDetail?ucno=' + v.ucno + '&pageNum=' + currentPage + '&type=' + type + '&keyword=' + keyword + '" class="text-decoration-none link-secondary">' + v.cname + '</a>'
@@ -215,7 +215,7 @@ $(document).ready(function(){
                 $.each(tradeList, function(i, v) {
                     let result =
                         '<tr>'
-                        + '<td><img src="./resources/upload/' + v.cimg + ' " style="width:100px;"></td>'
+                    	+ '<td><img src="./resources/upload/' + v.cimg + ' " style="width:200px; height:100px"></td>'
                         + '<td>'
                         + '  <h5>'
                         + '    <a href="TradeBoardDetail?ucno=' + v.ucno + '&pageNum=' + currentPage + '&type=' + type + '&keyword=' + keyword + '" class="text-decoration-none link-secondary">'+ v.cmanufacturer + ' ' + v.cname + '</a>'
@@ -373,7 +373,7 @@ $(document).ready(function(){
                 $.each(tradeList, function(i, v) {
                     let result =
                         '<tr>'
-                        + '<td><img src="./resources/upload/' + v.cimg + ' " style="width:100px;"></td>'
+                    	+ '<td><img src="./resources/upload/' + v.cimg + ' " style="width:200px; height:100px"></td>'
                         + '<td>'
                         + '  <h5>'
                         + '    <a href="TradeBoardDetail?ucno=' + v.ucno + '&pageNum=' + currentPage + '&type=' + type + '&keyword=' + keyword + '" class="text-decoration-none link-secondary">'+ v.cmanufacturer + ' ' + v.cname + '</a>'
@@ -531,7 +531,7 @@ $(document).ready(function(){
                 $.each(tradeList, function(i, v) {
                     let result =
                         '<tr>'
-                        + '<td><img src="./resources/upload/' + v.cimg + ' " style="width:100px;"></td>'
+                    	+ '<td><img src="./resources/upload/' + v.cimg + ' " style="width:200px; height:100px"></td>'
                         + '<td>'
                         + '  <h5>'
                         + '    <a href="TradeBoardDetail?ucno=' + v.ucno + '&pageNum=' + currentPage + '&type=' + type + '&keyword=' + keyword + '" class="text-decoration-none link-secondary">'+ v.cmanufacturer + ' ' + v.cname + '</a>'
@@ -689,7 +689,7 @@ $(document).ready(function(){
                 $.each(tradeList, function(i, v) {
                     let result =
                         '<tr>'
-                        + '<td><img src="./resources/upload/' + v.cimg + ' " style="width:100px;"></td>'
+                    	+ '<td><img src="./resources/upload/' + v.cimg + ' " style="width:200px; height:100px"></td>'
                         + '<td>'
                         + '  <h5>'
                         + '    <a href="TradeBoardDetail?ucno=' + v.ucno + '&pageNum=' + currentPage + '&type=' + type + '&keyword=' + keyword + '" class="text-decoration-none link-secondary">'+ v.cmanufacturer + ' ' + v.cname + '</a>'
@@ -847,7 +847,7 @@ $(document).ready(function(){
                 $.each(tradeList, function(i, v) {
                     let result =
                         '<tr>'
-                        + '<td><img src="./resources/upload/' + v.cimg + ' " style="width:100px;"></td>'
+                    	+ '<td><img src="./resources/upload/' + v.cimg + ' " style="width:200px; height:100px"></td>'
                         + '<td>'
                         + '  <h5>'
                         + '    <a href="TradeBoardDetail?ucno=' + v.ucno + '&pageNum=' + currentPage + '&type=' + type + '&keyword=' + keyword + '" class="text-decoration-none link-secondary">'+ v.cmanufacturer + ' ' + v.cname + '</a>'
@@ -1005,7 +1005,7 @@ $(document).ready(function(){
                 $.each(tradeList, function(i, v) {
                     let result =
                         '<tr>'
-                        + '<td><img src="./resources/upload/' + v.cimg + ' " style="width:100px;"></td>'
+                    	+ '<td><img src="./resources/upload/' + v.cimg + ' " style="width:200px; height:100px"></td>'
                         + '<td>'
                         + '  <h5>'
                         + '    <a href="TradeBoardDetail?ucno=' + v.ucno + '&pageNum=' + currentPage + '&type=' + type + '&keyword=' + keyword + '" class="text-decoration-none link-secondary">'+ v.cmanufacturer + ' ' + v.cname + '</a>'

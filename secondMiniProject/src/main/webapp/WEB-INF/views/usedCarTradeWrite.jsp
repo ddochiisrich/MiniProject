@@ -15,7 +15,9 @@
 		<h2 class="mb-4">판매할 중고차 정보 입력</h2>
 		<form action="registProcess" method="post" id="registForm" name="registForm" enctype="multipart/form-data">
 			<div class="row">
-				<div class="col-md-6">		
+				<div class="col-md-1 ">
+				</div>
+				<div class="col-md-5 ">		
 					<div class="form-group">
 						<label for="cname">차량명:</label>
 						<input type="text" class="form-control" id="cname" name="cname">
@@ -175,7 +177,7 @@
 						<input type="text" class="form-control" id="cshortment" name="cshortment">
 					</div>
 				</div>
-				<div class="col-md-6">				
+				<div class="col-md-5">				
 					<div class="form-group">
 						<label for="cseller">판매자:</label>
 						<input type="text" class="form-control" id="cseller" name="cseller" value="${ sessionScope.membership.name }">
@@ -240,9 +242,11 @@
 						<input type="text" class="form-control" id="ccondition" name="ccondition">
 					</div>
 				</div>	
-				<div class="form-group">
-						<button type="submit" class="btn btn-primary">등록</button>
-						<button type="button" class="btn btn-primary" onclick="location.href='used_car_board'">목록</button>
+				<div class="col-md-1 ">
+				</div>
+				<div class="form-group text-center my-3">
+						<button type="submit" class="btn btn-primary px-3 btn-lg me-2">등록</button>
+						<button type="button" class="btn btn-primary px-3 btn-lg ms-2" onclick="location.href='used_car_board'">목록</button>
 						</div>
 			</div>
 

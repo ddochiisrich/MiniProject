@@ -103,7 +103,7 @@ body {
 
           setTimeout(function() {
             window.location.href = href;
-          }, 2000); // 2초 후에 페이지 전환
+          }, 500); // 2초 후에 페이지 전환
         });
       });
     });

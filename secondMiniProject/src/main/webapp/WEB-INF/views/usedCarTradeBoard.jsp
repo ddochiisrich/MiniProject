@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>중고거래 게시판</title>
@@ -14,14 +15,17 @@
 		<div class="col">
 			<div class="row text-center">
 				<div class="col">
-					<h2>중고차 거래 게시판</h2>
+<div class="two alt-two my-5">
+  <h1 class="h1two">🚙 중고차 거래
+  </h1>
+</div>
 				</div>
 			</div>
 			<!-- 검색인경우 -->
 			<c:if test="${ searchOption }">
 				<div class="row">
 					<div class="col text-end">
-						<a href="used_car_board" class="btn btn-outline-success">검색 초기화</a>
+						<a href="used_car_board" class="btn btn-danger">검색 초기화</a>
 						<a href="registcar" class="btn btn-outline-success">차량 등록하기</a>
 					</div>
 				</div>
@@ -30,7 +34,9 @@
 			<c:if test="${ not searchOption }">
 				<div class="row">
 					<div class="col text-end">
-						<a href="registcar" class="btn btn-outline-success">차량 등록하기</a>
+						<div class="button-container">
+						<a href="registcar" class="btn btn-outline-success btn-layer-3_4 px-4">차량 등록하기<i class="fa fa-check"></i></a>
+						</div>
 					</div>
 				</div>
 			</c:if>
@@ -39,10 +45,10 @@
 			
 				<!-- 검색 -->
 				<div class="col-2 container mt-5">
-			        <h4 class="text-danger font-weight-bold">중고차 검색</h4>
+			        <h4 class="font-weight-bold my-3">중고차 조건검색</h4>
 			        <div class="text-end mb-3">
-			        	<A href="used_car_board"><button type="button" class="btn btn-primary" style="--bs-btn-padding-y: .1rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" > 조건 초기화 </button></A>
-						 <span class="text-end">${ count }대 </span>
+			        	<A href="used_car_board"><button type="button" class="btn btn-danger me-2" style="--bs-btn-padding-y: .1rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" > 조건 초기화 </button></A>
+						 <span class="text-end">총 : ${ count }대 </span>
 					</div>	 
 			        <div class="accordion" id="accordionExample">
 			            <div class="accordion-item">
@@ -283,7 +289,7 @@
 				<div class="col-10">
 					<table class="table table-hover">
 						<thead>
-							<tr class="table-dark">
+							<tr class="table-success">
 								<th colspan="2">차량정보</th>
 								<th>가격</th>
 								<th>판매자</th>
@@ -294,10 +300,9 @@
 							<c:if test="${ searchOption and not empty tradeBoardList }">
 								<c:forEach var="t" items="${tradeBoardList}" varStatus="status">
 									<tr>			
-										<td><img src="./resources/upload/${ t.cimg }" style="width:100px;"></td>
-										<%-- <td><img src="${ t.cimg }"></td> --%>
-										<td><h5><a href="TradeBoardDetail?ucno=${ t.ucno }&pageNum=${currentPage}&type=${ type }&keyword=${ keyword }" class="text-decoration-none link-secondary">${ t.cmanufacturer } ${ t.cname }</a></h5>
-											<pre>${ t.cyear }년식 | ${ t.cmileage }km | ${ t.carea } | ${ t.ccolor }
+										<td><img src="./resources/upload/${ t.cimg }" style="width:200px; height:100px;"></td>
+										<td><h5 class="my-2"><a href="TradeBoardDetail?ucno=${ t.ucno }&pageNum=${currentPage}&type=${ type }&keyword=${ keyword }" class="text-decoration-none link-secondary">${ t.cmanufacturer } ${ t.cname }</a></h5>
+											<pre class="mt-3">${ t.cyear }년식 | ${ t.cmileage }km | ${ t.carea } | ${ t.ccolor }
 ${ t.cshortment }</pre>
 										
 										</td>
@@ -310,10 +315,9 @@ ${ t.cshortment }</pre>
 							<c:if test="${ not searchOption and not empty tradeBoardList }">
 								<c:forEach var="t" items="${tradeBoardList}" varStatus="status">
 									<tr>			
-										<td><img src="./resources/upload/${ t.cimg }" style="width:100px;"></td>
-										<%-- <td><img src="${ t.cimg }"></td> --%>
+										<td><img src="./resources/upload/${ t.cimg }" style="width:200px; height:100px;"></td>
 										<td><h5><a href="TradeBoardDetail?ucno=${ t.ucno }&pageNum=${currentPage}" class="text-decoration-none link-secondary">${ t.cmanufacturer } ${ t.cname }</a></h5>
-											<pre>${ t.cyear }년식 | ${ t.cmileage }km | ${ t.carea } | ${ t.ccolor }
+											<pre class="mt-3">${ t.cyear }년식 | ${ t.cmileage }km | ${ t.carea } | ${ t.ccolor }
 ${ t.cshortment }</pre>
 										
 										</td>
