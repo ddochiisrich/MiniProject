@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, inittial-scale=1">
 <title>Bricks</title>
 <link href="resources/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link rel="icon" href="./resources/images/Brick_yellow.png">
 <script src="resources/js/jquery-3.7.1.min.js"></script>
 <script src="resources/js/trade.js"></script>
 <script src="resources/js/member.js"></script>
